@@ -96,6 +96,7 @@ public class BinActivity extends AppCompatActivity implements OnMapReadyCallback
     public void onRoutingFailure(RouteException e) {
         //comment
         //Amine's comment
+        //3rd comment
     }
 
     @Override
