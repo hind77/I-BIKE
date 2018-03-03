@@ -36,11 +36,8 @@ public class UserActivity extends AppCompatActivity{
         setContentView(R.layout.activity_user);
         initializeComponents();
 
-        //Set screen title
-        setTitle(connectedUser.getFname() + " " + connectedUser.getLname());
-
         //setting up the drawer
-        setUpDrawer();
+        if(SessionsManager.getInstance(this).isActive()) setUpDrawer();
     }
 
     private void initializeComponents(){
@@ -50,6 +47,9 @@ public class UserActivity extends AppCompatActivity{
             changeActivity(LoginActivity.class, true);
         }else{
             connectedUser = sessionsManager.getUser();
+            //Set screen title
+            setTitle(connectedUser.getFname() + " " + connectedUser.getLname());
+
         }
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
