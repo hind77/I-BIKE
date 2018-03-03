@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">I-Bike</string>
     <string name="API_KEY">AIzaSyAkR_UI7n_r7CtiiGZh2_N22ogxTO9Jq1I</string>
+    <string name="title_activity_user">User</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

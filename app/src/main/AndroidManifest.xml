@@ -20,11 +20,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
@@ -37,7 +32,16 @@
             android:value="AIzaSyAkR_UI7n_r7CtiiGZh2_N22ogxTO9Jq1I" />
 
         <activity android:name=".SignupActivity" />
-        <activity android:name=".BinActivity"></activity>
+        <activity android:name=".BinActivity" />
+        <activity
+            android:name=".UserActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

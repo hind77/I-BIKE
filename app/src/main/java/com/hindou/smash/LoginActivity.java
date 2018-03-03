@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                         data.getString("lname"),
                                         data.getString("email")
                                 ));
-                                changeActivity(MainActivity.class);
+                                changeActivity(UserActivity.class);
 
 
                             }else

@@ -1,9 +1,11 @@
 package com.hindou.smash;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,7 +45,7 @@ import org.json.JSONTokener;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener{
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
 
     private View holder;
@@ -60,14 +62,34 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_main);
         sessionsManager = SessionsManager.getInstance(this);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         fusedLocationProviderClient.getLastLocation().addOnSuccessListener(this,
                 new OnSuccessListener<Location>() {
                     @Override
                     public void onSuccess(Location location) {
                         mLocation = location;
-                        if(location == null){
+                        if (location == null) {
                             Toast.makeText(MainActivity.this, "No location", Toast.LENGTH_SHORT).show();
-                        }else {
+                        } else {
                             Log.d("Current Location", mLocation.getLatitude() + " , " + mLocation.getLongitude());
 
                             StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalVars.API_URL + "getBins.php"
@@ -78,24 +100,24 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                                     Log.d("VOLLEY_NETWORKS", response);
                                     if (mLocation != null) {
                                         mGoogleMap.setMyLocationEnabled(true);
-                                        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mLocation.getLatitude(), mLocation.getLongitude()), 17 ));
+                                        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mLocation.getLatitude(), mLocation.getLongitude()), 17));
                                     }
                                     try {
                                         JSONObject rep = (JSONObject) new JSONTokener(response).nextValue();
-                                        if (rep.getString("code").equals("200")){
+                                        if (rep.getString("code").equals("200")) {
                                             JSONArray data = rep.getJSONArray("data");
                                             mData = data;
-                                            for (int i=0; i < data.length(); i++){
+                                            for (int i = 0; i < data.length(); i++) {
                                                 mGoogleMap.addMarker(new MarkerOptions().position(
                                                         new LatLng(Double.valueOf(data.getJSONObject(i).getString("lat")),
                                                                 Double.valueOf(data.getJSONObject(i).getString("lng")))
                                                 ).icon(BitmapDescriptorFactory.fromResource(R.drawable.trash2))
-                                                .title(data.getJSONObject(i).getString("name")));
+                                                        .title(data.getJSONObject(i).getString("name")));
                                             }
-                                        }else {
+                                        } else {
                                             showSnack(rep.getString("error"));
                                         }
-                                    }catch (Exception e){
+                                    } catch (Exception e) {
 
                                     }
 
@@ -106,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                                         public void onErrorResponse(VolleyError error) {
 
                                         }
-                                    }){
+                                    }) {
                                 @Override
                                 protected Map<String, String> getParams() throws AuthFailureError {
 
