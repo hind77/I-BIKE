@@ -9,4 +9,7 @@
     <color name="ButtonsTextColors">#ffffff</color>
 
     <color name="tint">#000</color>
+
+    <color name="lock_bike_button_color">#d9534f</color>
+    <color name="unlock_bike_button_color">#5cb85c</color>
 </resources>

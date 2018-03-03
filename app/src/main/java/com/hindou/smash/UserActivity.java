@@ -116,6 +116,10 @@ public class UserActivity extends AppCompatActivity{
                                 changeActivity(ReserveActivity.class, false);
                                 return false;
 
+                            case 3 :
+                                changeActivity(LockBikesActivity.class, false);
+                                return false;
+
                             default: return false;
                         }
                     }
