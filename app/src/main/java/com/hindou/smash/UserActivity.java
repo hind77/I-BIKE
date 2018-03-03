@@ -1,72 +1,132 @@
 package com.hindou.smash;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
+import com.hindou.smash.Models.User;
 import com.hindou.smash.utils.SessionsManager;
+import com.mikepenz.materialdrawer.AccountHeader;
+import com.mikepenz.materialdrawer.AccountHeaderBuilder;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
-public class UserActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class UserActivity extends AppCompatActivity{
 
     private SessionsManager sessionsManager;
+    private User connectedUser;
+    private Toolbar toolbar;
+    private Context mContext;
+    private Drawer mDrawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+        initializeComponents();
 
+        //Set screen title
+        setTitle(connectedUser.getFname() + " " + connectedUser.getLname());
+
+        //setting up the drawer
+        setUpDrawer();
+    }
+
+    private void initializeComponents(){
+        mContext = this;
         sessionsManager = SessionsManager.getInstance(this);
         if (!sessionsManager.isActive()){
-            changeActivity(LoginActivity.class);
+            changeActivity(LoginActivity.class, true);
+        }else{
+            connectedUser = sessionsManager.getUser();
         }
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle(getResources().getString(R.string.title_activity_user));
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
     }
 
-    private void changeActivity(Class<?> destination) {
+    private void setUpDrawer(){
+
+        // Create the AccountHeader
+        AccountHeader headerResult = new AccountHeaderBuilder()
+                .withActivity(this)
+                .withHeaderBackground(R.drawable.header_background)
+                .addProfiles(
+                        new ProfileDrawerItem()
+                                .withName(connectedUser.getFname() + " " + connectedUser.getLname())
+                                .withEmail(connectedUser.getEmail())
+                )
+                .build();
+
+        //Primary items
+        PrimaryDrawerItem item1 = new PrimaryDrawerItem()
+                .withIcon(getResources().getDrawable(R.drawable.ic_directions_bike_blue_grey_400_24dp))
+                .withName(getResources().getString(R.string.drawer_bike_title))
+                .withIconTintingEnabled(true)
+                .withEnabled(false)
+                .withIdentifier(1),
+
+                item2 = new PrimaryDrawerItem()
+                        .withIcon(getResources().getDrawable(R.drawable.ic_map_blue_grey_400_24dp))
+                        .withName(getResources().getString(R.string.drawer_station_title))
+                        .withIconTintingEnabled(true)
+                        .withIdentifier(4),
+
+                item3 = new PrimaryDrawerItem()
+                        .withIcon(getResources().getDrawable(R.drawable.ic_healing_blue_grey_400_24dp))
+                        .withName(getResources().getString(R.string.drawer_health_title))
+                        .withIconTintingEnabled(true)
+                        .withIdentifier(5);
+
+        //Secondary items
+        SecondaryDrawerItem secItem1 = new SecondaryDrawerItem()
+                .withName(R.string.drawer_book_bike_title)
+                .withIdentifier(2),
+                secItem2 = new SecondaryDrawerItem()
+                        .withName(R.string.drawer_lock_bike_title)
+                        .withIdentifier(3);
+
+        mDrawer =  new DrawerBuilder()
+                .withToolbar(toolbar)
+                .withAccountHeader(headerResult)
+                .withActivity(this)
+                .addDrawerItems(
+                        item1,
+                        secItem1,
+                        secItem2,
+                        item2,
+                        item3
+                )
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+
+                        switch (position){
+                            case 2 :
+                                changeActivity(ReserveActivity.class, false);
+                                return false;
+
+                            default: return false;
+                        }
+                    }
+                })
+                .build();
+    }
+
+    private void changeActivity(Class<?> destination, boolean flag) {
         Intent intent = new Intent(UserActivity.this, destination);
         startActivity(intent);
-        finish();
-    }
-
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+        if(flag) finish();
     }
 
     @Override
@@ -88,30 +148,10 @@ public class UserActivity extends AppCompatActivity
             return true;
         }else if(id == R.id.logout){
             sessionsManager.destroySession();
-            changeActivity(LoginActivity.class);
+            changeActivity(LoginActivity.class, true);
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
 }

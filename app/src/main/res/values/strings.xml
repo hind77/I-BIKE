@@ -7,4 +7,23 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <!--Drawer primary item titles-->
+    <string name="drawer_bike_title">Bikes</string>
+    <string name="drawer_station_title">Stations</string>
+    <string name="drawer_health_title">E-Health</string>
+
+    <!--Drawer secondary item titles-->
+    <string name="drawer_book_bike_title">Reserve</string>
+    <string name="drawer_lock_bike_title">Lock bikes</string>
+
+    <!--Activities titles-->
+    <string name="reserve_activity_title">Reserve bike</string>
+
+    <!--Dialog's content-->
+    <string name="loading_text">Loading...</string>
+    <string name="select_hours_text">Please input duration</string>
+    <string name="select_hours_title">Reservation</string>
+    <string name="select_hours_positive">Book</string>
+
 </resources>

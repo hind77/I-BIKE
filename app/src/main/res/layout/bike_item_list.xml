@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?attr/selectableItemBackground"
+        android:layout_margin="5dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/bicycle_image_holder"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/bicycle_holder"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"/>
+
+            <TextView
+                android:id="@+id/bicycle_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/bicycle_image_holder"
+                android:layout_alignTop="@id/bicycle_image_holder"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/bicycle_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bicycle_name"
+                android:layout_alignStart="@id/bicycle_name"
+                android:layout_marginTop="7dp"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/bicycle_station"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bicycle_distance"
+                android:layout_alignStart="@id/bicycle_distance"
+                android:layout_marginTop="7dp"
+                android:textSize="16sp"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
