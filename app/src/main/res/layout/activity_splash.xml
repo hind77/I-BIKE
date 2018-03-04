@@ -11,8 +11,8 @@
         android:layout_width="248dp"
         android:layout_height="332dp"
         android:src="@drawable/splash"
-        tools:layout_editor_absoluteX="68dp"
-        tools:layout_editor_absoluteY="89dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="88dp" />
 
 </android.support.constraint.ConstraintLayout>

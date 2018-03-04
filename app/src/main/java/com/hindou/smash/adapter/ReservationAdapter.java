@@ -8,8 +8,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.hindou.smash.Models.Reservation;
 import com.hindou.smash.R;
+import com.hindou.smash.utils.GlobalVars;
+import com.hindou.smash.utils.VolleySingleton;
 
 import java.util.List;
 
@@ -62,6 +69,36 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
             timeStamp = itemView.findViewById(R.id.bike_timestamp);
             lock = itemView.findViewById(R.id.lock_bike);
             unlock = itemView.findViewById(R.id.unlock_bike);
+
+            lock.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    commandLocker("0");
+                }
+            });
+
+            unlock.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    commandLocker("1");
+                }
+            });
+        }
+
+        private void commandLocker(String mode){
+            StringRequest request = new StringRequest(Request.Method.GET, GlobalVars.LOCKER_API + mode,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            });
+            VolleySingleton.getInstance(mContext).addToRequestQueue(request);
         }
     }
 }

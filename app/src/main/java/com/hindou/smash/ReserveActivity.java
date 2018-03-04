@@ -147,8 +147,8 @@ public class ReserveActivity extends AppCompatActivity {
 
                 Map<String, String> params = new HashMap<>();
 
-                params.put("lat", "33.983916");
-                params.put("lng", "-6.868630");
+                params.put("lat", "33.911397");
+                params.put("lng", "-6.925615");
 
                 return params;
             }
