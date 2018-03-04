@@ -15,7 +15,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.hindou.smash.Models.User;
 import com.hindou.smash.utils.GlobalVars;
 import com.hindou.smash.utils.SessionsManager;
@@ -87,7 +86,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                                         mLastName.getText().toString(),
                                         mEmail.getText().toString()
                                 ));
-                                changeActivity(MainActivity.class, true);
+                                changeActivity(StationActivity.class, true);
                             }else{
                                 Toast.makeText(SignupActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                             }

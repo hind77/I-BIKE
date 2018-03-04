@@ -3,9 +3,10 @@ package com.hindou.smash;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.directions.route.AbstractRouting;
 import com.directions.route.Route;
@@ -22,16 +23,19 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.hindou.smash.Models.User;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BinActivity extends AppCompatActivity implements OnMapReadyCallback, RoutingListener {
+public class StationRoutingActivity extends AppCompatActivity implements OnMapReadyCallback, RoutingListener {
 
 
+    private User connectedUser;
+    private Toolbar toolbar;
     private GoogleMap mGoogleMap;
-    private TextView mBinName, mCoordination, mFillLabel;
+    private TextView mStationName, mCoordination, mBikesNumber;
     private ProgressBar progressBar;
     private LatLng start, end;
 
@@ -41,24 +45,32 @@ public class BinActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bin);
+        setContentView(R.layout.activity_station_routing);
 
         Intent intent = getIntent();
 
-        mBinName = (TextView) findViewById(R.id.bin_name);
-        mCoordination = (TextView) findViewById(R.id.bin_xy);
-        mFillLabel = (TextView) findViewById(R.id.fill_label);
-        progressBar = (ProgressBar) findViewById(R.id.progress);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        mStationName = (TextView) findViewById(R.id.station_name);
+        mCoordination = (TextView) findViewById(R.id.station_xy);
+        mBikesNumber = (TextView) findViewById(R.id.bikes_number);
+        //progressBar = (ProgressBar) findViewById(R.id.progress);
 
 
-        mBinName.setText(intent.getStringExtra("name"));
+        mStationName.setText(mStationName.getText().toString() + intent.getStringExtra("name"));
         mCoordination.setText(intent.getStringExtra("lat") + " , " + intent.getStringExtra("lng"));
-        mFillLabel.setText(mFillLabel.getText().toString() + " " + intent.getStringExtra("progress") + "%");
-        progressBar.setProgress(Integer.valueOf(intent.getStringExtra("progress")));
+        mBikesNumber.setText(mBikesNumber.getText().toString() + " " + intent.getStringExtra("num_bikes"));
+        //progressBar.setProgress(Integer.valueOf(intent.getStringExtra("progress")));
 
         polylines = new ArrayList<>();
 
-        SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.singleBinMap);
+        SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.singleStationMap);
         supportMapFragment.getMapAsync(this);
 
 
@@ -142,12 +154,24 @@ public class BinActivity extends AppCompatActivity implements OnMapReadyCallback
         // End marker
         options = new MarkerOptions();
         options.position(end);
-        options.icon(BitmapDescriptorFactory.fromResource(R.drawable.trash2));
+        options.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_golf_course_red_500_48dp));
         mGoogleMap.addMarker(options);
     }
 
     @Override
     public void onRoutingCancelled() {
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home :
+                onBackPressed();
+                return true;
+
+            default:
+                return true;
+        }
     }
 }

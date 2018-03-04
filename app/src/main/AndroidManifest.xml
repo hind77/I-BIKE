@@ -21,7 +21,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SplashActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".StationActivity" />
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -31,7 +31,7 @@
             android:value="AIzaSyAkR_UI7n_r7CtiiGZh2_N22ogxTO9Jq1I" />
 
         <activity android:name=".SignupActivity" />
-        <activity android:name=".BinActivity" />
+        <activity android:name=".StationRoutingActivity" />
         <activity android:name=".UserActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

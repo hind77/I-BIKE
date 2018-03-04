@@ -157,7 +157,7 @@ public class ReserveActivity extends AppCompatActivity {
         VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
 
-    private void changeActivity(Class<?> destination, boolean flag) {
+    public void changeActivity(Class<?> destination, boolean flag) {
         Intent intent = new Intent(ReserveActivity.this, destination);
         startActivity(intent);
         if(flag) finish();

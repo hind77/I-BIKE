@@ -8,7 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.hindou.smash.Models.User;
 import com.hindou.smash.utils.SessionsManager;
@@ -20,7 +19,6 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 public class UserActivity extends AppCompatActivity{
 
@@ -118,6 +116,10 @@ public class UserActivity extends AppCompatActivity{
 
                             case 3 :
                                 changeActivity(LockBikesActivity.class, false);
+                                return false;
+
+                            case 4 :
+                                changeActivity(StationActivity.class, false);
                                 return false;
 
                             default: return false;

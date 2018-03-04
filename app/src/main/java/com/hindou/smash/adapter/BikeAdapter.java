@@ -18,9 +18,11 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.hindou.smash.LockBikesActivity;
 import com.hindou.smash.Models.Bike;
 import com.hindou.smash.Models.User;
 import com.hindou.smash.R;
+import com.hindou.smash.ReserveActivity;
 import com.hindou.smash.utils.GlobalVars;
 import com.hindou.smash.utils.SessionsManager;
 import com.hindou.smash.utils.VolleySingleton;
@@ -98,7 +100,10 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.BikeViewHolder
                                     connectedUser = SessionsManager.getInstance(mContext).getUser();
                                     EditText duration = itemView.findViewById(R.id.duration);
 
-                                    createReservation(getAdapterPosition(), Integer.valueOf(duration.getText().toString()));
+                                    if(!duration.getText().toString().equals(""))
+                                        createReservation(getAdapterPosition(), Integer.valueOf(duration.getText().toString()));
+                                    else
+                                        Toast.makeText(mContext, "Sorry you need to enter the duration", Toast.LENGTH_SHORT).show();
                                 }
                             })
                             .show();
@@ -116,7 +121,7 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.BikeViewHolder
                             try {
                                 JSONObject reponse = (JSONObject) new JSONTokener(response).nextValue();
                                 if (reponse.getString("code").equals("200")){
-
+                                    ((ReserveActivity) mContext).changeActivity(LockBikesActivity.class, true);
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

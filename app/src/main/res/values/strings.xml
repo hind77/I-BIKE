@@ -20,6 +20,7 @@
     <!--Activities titles-->
     <string name="reserve_activity_title">Reserve bike</string>
     <string name="lock_activity_title">Lock/Unlock bikes</string>
+    <string name="stations_activity_title">Nearby stations</string>
 
     <!--Dialog's content-->
     <string name="loading_text">Loading...</string>

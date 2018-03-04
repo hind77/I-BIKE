@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         sessionsManager = SessionsManager.getInstance(this);
         if (sessionsManager.isActive()){
-            changeActivity(MainActivity.class);
+            changeActivity(StationActivity.class);
         }
 
 

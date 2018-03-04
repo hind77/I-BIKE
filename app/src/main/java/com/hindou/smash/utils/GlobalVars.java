@@ -10,5 +10,5 @@ public class GlobalVars {
     public static final int SHAREDPREF_MODE = 0;
     public static final String SHAREDPREF_NAME = "SHAREDPREFERENCE";
 
-    public static final String API_URL = "http://172.20.10.2/ibike/api/";
+    public static final String API_URL = "http://192.168.1.103/ibike/api/";
 }
