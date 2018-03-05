@@ -6,9 +6,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
-/**
- * Created by HP on 19/12/2017.
- */
 
 public class VolleySingleton {
 

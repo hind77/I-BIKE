@@ -7,9 +7,7 @@ import android.content.SharedPreferences;
 import com.hindou.smash.LoginActivity;
 import com.hindou.smash.Models.User;
 
-/**
- * Created by HP on 19/12/2017.
- */
+
 
 public class SessionsManager {
 

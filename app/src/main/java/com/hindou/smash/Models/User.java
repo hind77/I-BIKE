@@ -1,8 +1,6 @@
 package com.hindou.smash.Models;
 
-/**
- * Created by HP on 19/12/2017.
- */
+
 
 public class User {
 

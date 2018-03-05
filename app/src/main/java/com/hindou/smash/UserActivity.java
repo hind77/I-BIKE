@@ -78,13 +78,13 @@ public class UserActivity extends AppCompatActivity{
                         .withIcon(getResources().getDrawable(R.drawable.ic_map_blue_grey_400_24dp))
                         .withName(getResources().getString(R.string.drawer_station_title))
                         .withIconTintingEnabled(true)
-                        .withIdentifier(4),
+                        .withIdentifier(5),
 
                 item3 = new PrimaryDrawerItem()
                         .withIcon(getResources().getDrawable(R.drawable.ic_healing_blue_grey_400_24dp))
                         .withName(getResources().getString(R.string.drawer_health_title))
                         .withIconTintingEnabled(true)
-                        .withIdentifier(5);
+                        .withIdentifier(6);
 
         //Secondary items
         SecondaryDrawerItem secItem1 = new SecondaryDrawerItem()
@@ -92,7 +92,10 @@ public class UserActivity extends AppCompatActivity{
                 .withIdentifier(2),
                 secItem2 = new SecondaryDrawerItem()
                         .withName(R.string.drawer_lock_bike_title)
-                        .withIdentifier(3);
+                        .withIdentifier(3),
+                secItem3 = new SecondaryDrawerItem()
+                        .withName(R.string.drawer_cancel)
+                        .withIdentifier(4);
 
         mDrawer =  new DrawerBuilder()
                 .withToolbar(toolbar)
@@ -102,6 +105,7 @@ public class UserActivity extends AppCompatActivity{
                         item1,
                         secItem1,
                         secItem2,
+                        secItem3,
                         item2,
                         item3
                 )
@@ -118,8 +122,11 @@ public class UserActivity extends AppCompatActivity{
                                 changeActivity(LockBikesActivity.class, false);
                                 return false;
 
-                            case 4 :
+                            case 5 :
                                 changeActivity(StationActivity.class, false);
+                                return false;
+                            case 4:
+                                changeActivity(CancelReservationActivity.class,false);
                                 return false;
 
                             default: return false;

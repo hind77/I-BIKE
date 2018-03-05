@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?attr/selectableItemBackground">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/bicycle_image_holder_cancel"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/bicycle_holder"/>
+            <TextView
+                android:id="@+id/bike_name_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_below="@id/bicycle_image_holder_cancel"
+                android:layout_alignStart="@id/bicycle_image_holder_cancel"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:id="@+id/duration_place_holder_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="@string/duration_place_holder_text"
+                android:layout_alignTop="@id/bicycle_image_holder_cancel"
+                android:layout_toEndOf="@id/bicycle_image_holder_cancel"
+                android:layout_marginStart="5dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/bike_reservation_duration_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_alignTop="@id/bicycle_image_holder_cancel"
+                android:layout_toEndOf="@id/duration_place_holder_cancel"
+                android:layout_marginStart="3dp"/>
+
+            <TextView
+                android:id="@+id/timestamp_place_holder_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="@string/timestamp_holder_text"
+                android:layout_below="@id/duration_place_holder_cancel"
+                android:layout_toEndOf="@id/bicycle_image_holder_cancel"
+                android:layout_marginStart="5dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/bike_timestamp_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_below="@id/duration_place_holder_cancel"
+                android:layout_toEndOf="@id/timestamp_place_holder_cancel"
+                android:layout_marginStart="3dp"/>
+
+
+            <Button
+                android:id="@+id/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/cancel_reseve_button_color"
+               android:text="@string/cancel_button"
+                android:textColor="@color/ButtonsTextColors"
+                android:layout_below="@id/bike_timestamp_cancel"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="10dp"
+                />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

@@ -16,11 +16,13 @@
     <!--Drawer secondary item titles-->
     <string name="drawer_book_bike_title">Reserve</string>
     <string name="drawer_lock_bike_title">Lock bikes</string>
+    <string name="drawer_cancel">Cancel reservation</string>
 
     <!--Activities titles-->
     <string name="reserve_activity_title">Reserve bike</string>
     <string name="lock_activity_title">Lock/Unlock bikes</string>
     <string name="stations_activity_title">Nearby stations</string>
+    <string name="cancel_activity_title">Cancel reservation</string>
 
     <!--Dialog's content-->
     <string name="loading_text">Loading...</string>
@@ -33,5 +35,8 @@
     <string name="timestamp_holder_text">Reserved at : </string>
     <string name="lock_button_text">Lock</string>
     <string name="unlock_button_text">Unlock</string>
+    <!--cancel reserve activity-->
+    <string name="cancel_button">Cancel</string>
+
 
 </resources>

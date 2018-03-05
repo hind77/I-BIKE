@@ -36,9 +36,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by amineelouattar on 3/3/18.
- */
+
 
 public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.BikeViewHolder> {
 
@@ -53,12 +51,14 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.BikeViewHolder
     }
 
     @Override
+    // inflate the view and its holder
     public BikeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.bike_item_list, parent, false);
         return new BikeViewHolder(itemView);
     }
 
     @Override
+    //this function bind the data to the view
     public void onBindViewHolder(BikeViewHolder holder, int position) {
 
         Bike current = bikeList.get(position);
@@ -76,14 +76,14 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.BikeViewHolder
     class BikeViewHolder extends RecyclerView.ViewHolder{
 
         private TextView bikeName, distance, station;
-
+        // initialize the viewitems
         public BikeViewHolder(View itemView) {
             super(itemView);
 
             bikeName = itemView.findViewById(R.id.bicycle_name);
             distance = itemView.findViewById(R.id.bicycle_distance);
             station = itemView.findViewById(R.id.bicycle_station);
-
+            //manage the click
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -110,7 +110,7 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.BikeViewHolder
                 }
             });
         }
-
+        // create reservation
         private void createReservation(final int position, final int duration){
 
             StringRequest request = new StringRequest(Request.Method.POST, GlobalVars.API_URL + "createReservation.php",

@@ -1,8 +1,6 @@
 package com.hindou.smash.Models;
 
-/**
- * Created by amineelouattar on 3/3/18.
- */
+
 
 public class Bike {
 

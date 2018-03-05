@@ -40,7 +40,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ReserveActivity" />
-        <activity android:name=".LockBikesActivity"></activity>
+        <activity android:name=".LockBikesActivity" />
+        <activity android:name=".CancelReservationActivity"></activity>
     </application>
 
 </manifest>
