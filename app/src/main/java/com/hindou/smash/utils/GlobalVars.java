@@ -9,9 +9,9 @@ public class GlobalVars {
 
 
 
-    public static final String API_URL = "http://192.168.43.213:8080/ibike/api/";
+    public static final String API_URL = "http:// 192.168.1.104:8080/ibike/api/";
 
     //raspberry IP address
-    public static final String LOCKER_API = "http://192.168.43.160/bike_locker.php?lock=";
+    public static final String LOCKER_API = "http://192.168.43.215/bike_locker.php?lock=";
 
 }

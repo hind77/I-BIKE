@@ -123,6 +123,9 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.BikeViewHolder
                                 if (reponse.getString("code").equals("200")){
                                     ((ReserveActivity) mContext).changeActivity(LockBikesActivity.class, true);
                                 }
+                                else{
+                                    Toast.makeText(mContext, "Sorry you can reserve just only one bike", Toast.LENGTH_SHORT).show();
+                                }
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

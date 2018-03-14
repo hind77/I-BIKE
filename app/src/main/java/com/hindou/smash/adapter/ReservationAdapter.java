@@ -1,11 +1,16 @@
 package com.hindou.smash.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.os.CountDownTimer;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -18,13 +23,26 @@ import com.hindou.smash.R;
 import com.hindou.smash.utils.GlobalVars;
 import com.hindou.smash.utils.VolleySingleton;
 
+import java.io.IOException;
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+
+import static com.google.android.gms.internal.zzahn.runOnUiThread;
 
 
 public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.ReservationViewHolder> {
 
     private List<Reservation> mReservationList;
     private Context mContext;
+    String writeAPI;
+    EditText codeCommand;
+
+    CountDownTimer mCountDownTimer;
+    Boolean check = false;
+    int i = 0;
 
     public ReservationAdapter(List<Reservation> mReservationList, Context mContext) {
         this.mReservationList = mReservationList;
@@ -70,32 +88,62 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
             lock.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    commandLocker("0");
+                    lock(view,"1");
                 }
             });
 
             unlock.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    commandLocker("1");
+                    lock(view,"0");
                 }
             });
         }
+        public void lock (View v, String c) {
+            i = 0;
+            writeAPI = "QGBXNZMVUHNZRW2Z";
+            String s = writeAPI;
 
-        private void commandLocker(String mode){
-            StringRequest request = new StringRequest(Request.Method.GET, GlobalVars.LOCKER_API + mode,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
+            OkHttpClient okHttpClient = new OkHttpClient();
+                okhttp3.Request.Builder builder = new okhttp3.Request.Builder();
+                okhttp3.Request request = builder.url("https://api.thingspeak.com/update?api_key=" + s + "&field1=" + c).build();
+                okHttpClient.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        updateView("Error - " + e.getMessage());
+                    }
 
+                    @Override
+                    public void onResponse(Call call, okhttp3.Response response) throws IOException {
+                        if (response.isSuccessful()) {
+                            try {
+                                updateView(response.body().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                                updateView("Error - " + e.getMessage());
+                            }
+                        } else {
+                            updateView("Not Success - code : " + response.code());
                         }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
+                    }
 
-                }
-            });
-            VolleySingleton.getInstance(mContext).addToRequestQueue(request);
+                    public void updateView(final String strResult) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+
+
+
+                            }
+                        });
+                    }
+                });
+
+
+            }
+
         }
+
+
     }
-}
+

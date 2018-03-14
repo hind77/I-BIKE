@@ -62,6 +62,7 @@ public class CancelReservationActivity extends AppCompatActivity {
         }
     }
 
+
     private void initializeComponents(){
 
 
@@ -118,6 +119,7 @@ public class CancelReservationActivity extends AppCompatActivity {
 
                                             )
                                     );
+
 
                                 }
 
