@@ -128,6 +128,9 @@ public class UserActivity extends AppCompatActivity{
                             case 4:
                                 changeActivity(CancelReservationActivity.class,false);
                                 return false;
+                            case 6 :
+                                changeActivity(Ehealth.class,false);
+                                return false;
 
                             default: return false;
                         }

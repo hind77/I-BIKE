@@ -3,6 +3,8 @@ package com.hindou.smash.adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.media.MediaActionSound;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -90,7 +92,8 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
                 public void onClick(View view) {
                     lock(view,"1");
                 }
-            });
+            }
+            );
 
             unlock.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -100,10 +103,11 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
             });
         }
         public void lock (View v, String c) {
+            final MediaPlayer mp = MediaPlayer.create(mContext,R.raw.click);
             i = 0;
             writeAPI = "QGBXNZMVUHNZRW2Z";
             String s = writeAPI;
-
+            mp.start();
             OkHttpClient okHttpClient = new OkHttpClient();
                 okhttp3.Request.Builder builder = new okhttp3.Request.Builder();
                 okhttp3.Request request = builder.url("https://api.thingspeak.com/update?api_key=" + s + "&field1=" + c).build();

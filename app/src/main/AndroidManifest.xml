@@ -42,6 +42,7 @@
         <activity android:name=".ReserveActivity" />
         <activity android:name=".LockBikesActivity" />
         <activity android:name=".CancelReservationActivity"></activity>
+        <activity android:name=".Ehealth"></activity>
     </application>
 
 </manifest>
