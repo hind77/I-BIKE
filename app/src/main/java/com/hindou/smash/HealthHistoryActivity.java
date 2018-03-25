@@ -110,7 +110,7 @@ public class HealthHistoryActivity extends AppCompatActivity {
                                 JSONArray data = reponse.getJSONArray("data");
                                 for(int i = 0; i < data.length(); i++){
 
-                                    if(data.getJSONObject(i).getString("state").equals("0")){
+
 
 
                                         mHealthResourceList.add(
@@ -123,7 +123,7 @@ public class HealthHistoryActivity extends AppCompatActivity {
                                                             data.getJSONObject(i).getString("date")
                                                             )
                                         );
-                                    }
+
 
                                 }
 
