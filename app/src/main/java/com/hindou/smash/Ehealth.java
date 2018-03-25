@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.hindou.smash.Models.User;
@@ -23,6 +25,7 @@ public class Ehealth extends AppCompatActivity {
     private User connectedUser;
     private Toolbar toolbar;
     private Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,12 +48,20 @@ public class Ehealth extends AppCompatActivity {
 
         mContext = this;
 
+    Button history;
+    history = (Button) findViewById(R.id.showb);
 
         connectedUser = sessionsManager.getUser();
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         connectedUser = sessionsManager.getUser();
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeActivity(HealthHistoryActivity.class, true);
+            }
+        });
 
         if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

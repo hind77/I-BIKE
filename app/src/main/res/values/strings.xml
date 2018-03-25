@@ -61,6 +61,7 @@
     <string name="health2">*Step2: click on save if you want to save it in your health history. </string>
     <string name="health3">*Step3: click on history to show tou health history. </string>
     <!--E-health history-->
+    <string name="Health_History_title">Health History</string>
     <string name="temp_history">Temperature</string>
     <string name="beat_history">HeartBeats</string>
     <string name="calorie_history">Calories</string>

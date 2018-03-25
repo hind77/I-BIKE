@@ -43,6 +43,7 @@
         <activity android:name=".LockBikesActivity" />
         <activity android:name=".CancelReservationActivity"></activity>
         <activity android:name=".Ehealth"></activity>
+        <activity android:name=".HealthHistoryActivity"></activity>
     </application>
 
 </manifest>
