@@ -3,7 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/ButtonsTextColors"
+    >
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -22,33 +24,219 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize">
+        android:layout_marginTop="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
 
 
 <LinearLayout
+    android:id="@+id/content_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
            <ImageView
                android:id="@+id/img"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:src="@drawable/log"
+               android:src="@drawable/heliantha"
                />
            <TextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:text="I_BIKE GUIDE"
-               android:textColor="@color/tint"
-               android:textSize="16sp"
+               android:textColor="@color/ButtonsTextColors"
+               android:textSize="20sp"
                android:gravity="center"
                />
-
-
-
-
 </LinearLayout>
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_below="@+id/content_layout"
+            android:layout_marginTop="20dp"
+            android:background="@color/ButtonsTextColors">
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:columnCount="1"
+                android:rowCount="6"
+                android:alignmentMode="alignMargins"
+                android:columnOrderPreserved="false"
+                android:padding="14dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:src="@drawable/poster1"/>
+
+
+                <android.support.v7.widget.CardView
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/general"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="@string/general_title"
+                       android:textColor="@color/colorPrimaryDark"
+                        android:textStyle="bold"
+                        android:textSize="20sp"/>
+                     <TextView
+                         android:id="@+id/option1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_below="@id/general"
+                         android:textColor="@color/tint"
+                        android:text="@string/option1"
+                        android:textSize="12sp"/>
+                        <TextView
+                            android:id="@+id/option2"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_below="@id/option1"
+                            android:textColor="@color/tint"
+                            android:text="@string/option2"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:id="@+id/option3"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_below="@id/option2"
+                            android:textColor="@color/tint"
+                            android:text="@string/option3"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:id="@+id/option4"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_below="@id/option3"
+                            android:textColor="@color/tint"
+                            android:text="@string/option4"
+                            android:textSize="12sp"/>
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/poster2"/>
+
+                <android.support.v7.widget.CardView
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:id="@+id/booking"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:text="@string/book_title"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold"
+                            android:textSize="20sp"/>
+                        <TextView
+                            android:id="@+id/book1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_below="@id/booking"
+                            android:textColor="@color/tint"
+                            android:text="@string/book1"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:id="@+id/book2"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_below="@id/book1"
+                            android:textColor="@color/tint"
+                            android:text="@string/book2"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:id="@+id/book3"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_below="@id/book2"
+                            android:textColor="@color/tint"
+                            android:text="@string/book3"
+                            android:textSize="12sp"/>
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/poster5"/>
+                <android.support.v7.widget.CardView
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:id="@+id/health"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:text="@string/health_title"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold"
+                            android:textSize="20sp"/>
+                        <TextView
+                            android:id="@+id/health1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_below="@id/health"
+                            android:textColor="@color/tint"
+                            android:text="@string/health1"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:id="@+id/health2"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_below="@id/health1"
+                            android:textColor="@color/tint"
+                            android:text="@string/health2"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:id="@+id/health3"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_below="@id/health2"
+                            android:textColor="@color/tint"
+                            android:text="@string/health3"
+                            android:textSize="12sp"/>
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+
+            </GridLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
 
     </RelativeLayout>
 

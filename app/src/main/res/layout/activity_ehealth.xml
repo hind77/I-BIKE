@@ -159,10 +159,19 @@
                     android:id="@+id/calories"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="150 Kal"
+                    android:text="150"
                     android:textSize="18sp"
                     android:textColor="@color/colorPrimary"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kal"
+                    android:textSize="18sp"
+                    android:textColor="@color/colorPrimary"
+                   android:layout_marginLeft="5dp"
                     android:layout_marginTop="20dp"/>
             </LinearLayout>
 
@@ -179,7 +188,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
        android:layout_gravity="center"
-       android:text="start"
+       android:text="@string/start_button"
         android:textColor="@color/ButtonsTextColors"
         android:background="@color/colorPrimary"
 
@@ -189,7 +198,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="save"
+           android:text="@string/save_button"
+            android:textColor="@color/ButtonsTextColors"
+            android:background="@color/colorPrimary"
+
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"></Button>
+        <Button
+            android:id="@+id/showb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/history_button"
             android:textColor="@color/ButtonsTextColors"
             android:background="@color/colorPrimary"
 

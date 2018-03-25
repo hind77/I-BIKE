@@ -37,12 +37,33 @@
     <string name="unlock_button_text">Unlock</string>
     <!--cancel reserve activity-->
     <string name="cancel_button">Cancel</string>
-    <!-- guide text -->
+
     <!--EHealth -->
     <string name="save_button">Save</string>
     <string name="ehealth_title">E-Health</string>
+    <string name="history_button">History</string>
+    <string name="start_button">Start</string>
 
-
+    <!--general guide-->
+    <string name="general_title">General options: </string>
+    <string name="option1">*Option1: book a bicycle for a specific duration.</string>
+    <string name="option2">*Option2: lock and unlock you bicycle.</string>
+    <string name="option3">*Option3: visualize the nearest sattion with an optimal road.</string>
+    <string name="option4">*Option4: E-health interface to check your temperature, heart-beat and calories burnt.</string>
+    <!--booking guide-->
+    <string name="book_title">Booking: </string>
+    <string name="book1">*Step1: click on reserve and choose your bicycle. </string>
+    <string name="book2">*Step2: click on unclock to unclock your bicycle or lock to lock it out of station. </string>
+    <string name="book3">*Step3: start using your bicycle. </string>
+    <!--E-health guide-->
+    <string name="health_title">E-Health: </string>
+    <string name="health1">*Step1: click on start to get your realtime data. </string>
+    <string name="health2">*Step2: click on save if you want to save it in your health history. </string>
+    <string name="health3">*Step3: click on history to show tou health history. </string>
+    <!--E-health history-->
+    <string name="temp_history">Temperature</string>
+    <string name="beat_history">HeartBeats</string>
+    <string name="calorie_history">Calories</string>
 
 
 
