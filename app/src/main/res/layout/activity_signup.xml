@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.hindou.smash.SignupActivity"
-    android:background="@color/backgroundColor">
+    android:background="@color/ButtonsTextColors">
 
     <TextView
         android:layout_width="wrap_content"
@@ -14,8 +14,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Smash Registration"
-        android:textColor="#64a83c"
+        android:text="ibike"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="24dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

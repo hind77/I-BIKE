@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="com.hindou.smash.Ehealth"
-    >
+    tools:context="com.hindou.smash.Ehealth">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,6 +43,7 @@
             android:layout_marginRight="16dp"
             app:cardElevation="8dp"
             app:cardCornerRadius="8dp"
+
             >
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -50,18 +51,18 @@
                 android:layout_margin="16dp"
 
                 android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/temp"/>
+                <com.cunoraz.gifview.library.GifView
+                    android:id="@+id/tempgif"
+                    android:layout_width="80dp"
+                    android:layout_height="100dp"
+                    custom:gif="@mipmap/tempgif"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Temperature:"
                     android:textSize="18sp"
                     android:textColor="@color/colorPrimary"
-                    android:layout_marginLeft="20dp"
+
                     android:layout_marginTop="20dp"/>
                 <TextView
                     android:id="@+id/temp"
@@ -93,6 +94,7 @@
             android:layout_marginRight="16dp"
             app:cardElevation="8dp"
             app:cardCornerRadius="8dp"
+
             >
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -100,19 +102,12 @@
                 android:layout_margin="16dp"
 
                 android:orientation="horizontal">
-                <ImageView
+                <com.cunoraz.gifview.library.GifView
+                    android:id="@+id/gifview"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/hear"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="HeartBeat:"
-                    android:textSize="18sp"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"/>
+                    custom:gif="@mipmap/heartgif"/>
+
                 <TextView
                     android:id="@+id/heart"
                     android:layout_width="wrap_content"
@@ -122,6 +117,12 @@
                     android:textColor="@color/colorPrimary"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"/>
+                <com.cunoraz.gifview.library.GifView
+                    android:id="@+id/pulsegif"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="150dp"
+                    android:layout_height="200dp"
+                    custom:gif="@mipmap/puslso"/>
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
@@ -142,11 +143,11 @@
                 android:layout_margin="16dp"
 
                 android:orientation="horizontal">
-                <ImageView
+                <com.cunoraz.gifview.library.GifView
+                    android:id="@+id/cal"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/calories"/>
+                    custom:gif="@mipmap/calories"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -190,8 +191,8 @@
        android:layout_gravity="center"
        android:text="@string/start_button"
         android:textColor="@color/ButtonsTextColors"
-        android:background="@color/colorPrimary"
-
+        android:background="@drawable/sing_in_btn"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"></Button>
         <Button
             android:id="@+id/saveb"
@@ -200,7 +201,8 @@
             android:layout_gravity="center"
            android:text="@string/save_button"
             android:textColor="@color/ButtonsTextColors"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/sing_in_btn"
+            android:layout_marginTop="10dp"
 
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="20dp"></Button>
@@ -211,7 +213,8 @@
             android:layout_gravity="center"
             android:text="@string/history_button"
             android:textColor="@color/ButtonsTextColors"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/sing_in_btn"
+            android:layout_marginTop="10dp"
 
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="20dp"></Button>

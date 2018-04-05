@@ -84,7 +84,14 @@ public class UserActivity extends AppCompatActivity{
                         .withIcon(getResources().getDrawable(R.drawable.ic_healing_blue_grey_400_24dp))
                         .withName(getResources().getString(R.string.drawer_health_title))
                         .withIconTintingEnabled(true)
-                        .withIdentifier(6);
+                        .withIdentifier(6),
+                item4 = new PrimaryDrawerItem()
+                        .withIcon(getResources().getDrawable(R.drawable.ic_date_range_grey_400_24dp))
+                        .withName(R.string.event_activity_title)
+                        .withIconTintingEnabled(true)
+                        .withIdentifier(7);
+
+
 
         //Secondary items
         SecondaryDrawerItem secItem1 = new SecondaryDrawerItem()
@@ -107,7 +114,8 @@ public class UserActivity extends AppCompatActivity{
                         secItem2,
                         secItem3,
                         item2,
-                        item3
+                        item3,
+                        item4
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -130,6 +138,9 @@ public class UserActivity extends AppCompatActivity{
                                 return false;
                             case 6 :
                                 changeActivity(Ehealth.class,false);
+                                return false;
+                            case 7 :
+                                changeActivity(EventActivity.class,false);
                                 return false;
 
                             default: return false;

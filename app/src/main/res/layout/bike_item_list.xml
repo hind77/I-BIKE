@@ -17,15 +17,18 @@
                 android:layout_height="80dp"
                 android:src="@drawable/bicycle_holder"
                 android:layout_marginTop="20dp"
-                android:layout_marginStart="20dp"/>
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"/>
 
             <TextView
                 android:id="@+id/bicycle_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/bicycle_image_holder"
+                android:layout_toRightOf="@id/bicycle_image_holder"
                 android:layout_alignTop="@id/bicycle_image_holder"
                 android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
                 android:layout_marginTop="10dp"
                 android:textSize="16sp"/>
 
@@ -35,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/bicycle_name"
                 android:layout_alignStart="@id/bicycle_name"
+                android:layout_alignLeft="@id/bicycle_name"
                 android:layout_marginTop="7dp"
                 android:textSize="16sp"/>
 
@@ -44,6 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/bicycle_distance"
                 android:layout_alignStart="@id/bicycle_distance"
+                android:layout_alignLeft="@id/bicycle_distance"
                 android:layout_marginTop="7dp"
                 android:textSize="16sp"/>
         </RelativeLayout>

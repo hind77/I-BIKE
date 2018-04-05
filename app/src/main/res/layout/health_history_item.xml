@@ -9,12 +9,14 @@
         android:foreground="?attr/selectableItemBackground">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/ButtonsTextColors">
             <ImageView
                 android:id="@+id/health_icon"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:src="@drawable/hicon"
                 />
@@ -22,44 +24,60 @@
                 android:id="@+id/health_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
+                android:textSize="15sp"
+                android:textColor="@color/primary_dark"
                 android:layout_below="@id/health_icon"
                 android:layout_marginTop="5dp"/>
             <TextView
                 android:id="@+id/temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
+                android:textSize="15sp"
+                android:textColor="@color/primary_dark"
                 android:text="@string/temp_history"
                 android:layout_alignTop="@id/health_icon"
                 android:layout_toEndOf="@id/health_icon"
+                android:layout_toRightOf="@+id/health_icon"
                 android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
                 android:textStyle="bold"/>
             <TextView
                 android:id="@+id/temperature_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_dark"
                 android:layout_below="@id/temperature"
                 android:layout_toEndOf="@id/health_icon"
+                android:layout_toRightOf="@id/health_icon"
                 android:layout_marginTop="10dp"
-                android:layout_marginStart="20dp"/>
+
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"/>
             <TextView
                 android:id="@+id/calories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
+                android:textSize="15sp"
+                android:textColor="@color/primary_dark"
                 android:text="@string/calorie_history"
                 android:textStyle="bold"
                 android:layout_alignTop="@+id/health_icon"
                 android:layout_toEndOf="@+id/temperature"
-                android:layout_marginStart="15dp"/>
+                android:layout_toRightOf="@+id/temperature"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"/>
             <TextView
                 android:id="@+id/calories_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="210dp"
+                android:layout_marginLeft="210dp"
+                android:textColor="@color/primary_dark"
                 android:layout_below="@+id/calories"
+                android:textSize="30sp"
+                android:textStyle="bold"
                 android:layout_marginTop="10dp"
                 />
             <TextView
@@ -68,7 +86,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/health_icon"
                 android:layout_toEndOf="@id/calories"
+                android:layout_toRightOf="@+id/calories"
                 android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/primary_dark"
+                android:textSize="15sp"
                 android:text="@string/beat_history"
                 android:textStyle="bold"
                 />
@@ -76,9 +98,14 @@
                 android:id="@+id/beats_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="280dp"
+                android:layout_marginStart="290dp"
+                android:layout_marginLeft="290dp"
                 android:layout_below="@+id/beats"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_dark"
                 android:layout_marginTop="10dp"
+
                 />
 
         </RelativeLayout>

@@ -15,6 +15,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginLeft="0dp"
                 android:layout_marginTop="20dp"
                 android:src="@drawable/bicycle_holder"/>
             <TextView
@@ -24,6 +25,7 @@
                 android:textSize="16sp"
                 android:layout_below="@id/bicycle_image_holder"
                 android:layout_alignStart="@id/bicycle_image_holder"
+                android:layout_alignLeft="@id/bicycle_image_holder"
                 android:layout_marginTop="5dp"/>
 
             <TextView
@@ -34,7 +36,9 @@
                 android:text="@string/duration_place_holder_text"
                 android:layout_alignTop="@id/bicycle_image_holder"
                 android:layout_toEndOf="@id/bicycle_image_holder"
+                android:layout_toRightOf="@id/bicycle_image_holder"
                 android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -44,7 +48,9 @@
                 android:textSize="16sp"
                 android:layout_alignTop="@id/bicycle_image_holder"
                 android:layout_toEndOf="@id/duration_place_holder"
-                android:layout_marginStart="3dp"/>
+                android:layout_toRightOf="@id/duration_place_holder"
+                android:layout_marginStart="3dp"
+                android:layout_marginLeft="3dp"/>
 
             <TextView
                 android:id="@+id/timestamp_place_holder"
@@ -54,7 +60,9 @@
                 android:text="@string/timestamp_holder_text"
                 android:layout_below="@id/duration_place_holder"
                 android:layout_toEndOf="@id/bicycle_image_holder"
+                android:layout_toRightOf="@id/bicycle_image_holder"
                 android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -64,18 +72,22 @@
                 android:textSize="16sp"
                 android:layout_below="@id/duration_place_holder"
                 android:layout_toEndOf="@id/timestamp_place_holder"
-                android:layout_marginStart="3dp"/>
+                android:layout_toRightOf="@id/timestamp_place_holder"
+                android:layout_marginStart="3dp"
+                android:layout_marginLeft="5dp"/>
 
             <Button
                 android:id="@+id/lock_bike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/lock_bike_button_color"
+                android:background="@drawable/lock_btn"
                 android:text="@string/lock_button_text"
                 android:textColor="@color/ButtonsTextColors"
                 android:layout_below="@id/bike_timestamp"
                 android:layout_toStartOf="@id/unlock_bike"
+                android:layout_toLeftOf="@+id/unlock_bike"
                 android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
                 />
 
@@ -83,12 +95,14 @@
                 android:id="@+id/unlock_bike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/unlock_bike_button_color"
+                android:background="@drawable/unlock_btn"
                 android:text="@string/unlock_button_text"
                 android:textColor="@color/ButtonsTextColors"
                 android:layout_below="@id/bike_timestamp"
                 android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
                 />
 

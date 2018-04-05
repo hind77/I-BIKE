@@ -13,4 +13,7 @@
     <color name="lock_bike_button_color">#d9534f</color>
     <color name="unlock_bike_button_color">#5cb85c</color>
     <color name="cancel_reseve_button_color">#e4c330</color>
+    <color name="heliantha">#c0fc34</color>
+    <color name="event">#e75323</color>
+
 </resources>
