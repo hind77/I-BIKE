@@ -22,162 +22,110 @@
 
 
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:columnCount="1"
-        android:rowCount="3"
-        android:alignmentMode="alignMargins"
-        android:columnOrderPreserved="false"
-        android:padding="14dp"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/testView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/txtString"
+                android:text=""
+                android:textSize="15sp" />
 
-        >
-        <android.support.v7.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            app:cardElevation="8dp"
-            app:cardCornerRadius="8dp"
+            <TextView
+                android:id="@+id/txtString"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignLeft="@+id/testView1"
+                android:layout_alignParentBottom="true"
+                android:text=""
+                android:textSize="15sp" />
 
-            >
+            <Button
+                android:id="@+id/buttonOn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="LED ON" />
+
+            <Button
+                android:id="@+id/buttonOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/buttonOn"
+                android:layout_alignParentRight="true"
+                android:text="LED OFF" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:orientation="vertical"
+                android:layout_centerInParent="true">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
 
-                android:orientation="horizontal">
-                <com.cunoraz.gifview.library.GifView
-                    android:id="@+id/tempgif"
-                    android:layout_width="80dp"
-                    android:layout_height="100dp"
-                    custom:gif="@mipmap/tempgif"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Temperature:"
-                    android:textSize="18sp"
-                    android:textColor="@color/colorPrimary"
+                    <ProgressBar
+                        android:id="@+id/progressBar1"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_centerInParent="true"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressDrawable="@drawable/custom_temp_progressbar"
+                        android:secondaryProgress="0" />
 
-                    android:layout_marginTop="20dp"/>
-                <TextView
-                    android:id="@+id/temp"
+
+                    <TextView
+                        android:id="@+id/sensorView0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="196dp"
+                        android:text="= ????"
+                        android:layout_alignBottom="@+id/progressBar1"
+                        android:layout_centerInParent="true"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </RelativeLayout>
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="37"
-                    android:textSize="18sp"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="°C"
-                    android:textSize="18sp"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginTop="20dp"/>
+                    android:layout_centerInParent="true">
+                    <ProgressBar
+                        android:id="@+id/progressBar2"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_centerInParent="true"
+
+                        android:indeterminate="false"
+                        android:max="200"
+                        android:progress="0"
+                        android:progressDrawable="@drawable/custom_heart_progressbar"
+                        android:secondaryProgress="0" />
+                    <TextView
+                        android:id="@+id/sensorView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/progressBar2"
+                        android:layout_centerInParent="true"
+                        android:layout_centerHorizontal="true"
+                        android:text="= ????"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </RelativeLayout>
+
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
-        <android.support.v7.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            app:cardElevation="8dp"
-            app:cardCornerRadius="8dp"
+        </RelativeLayout>
 
-            >
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
 
-                android:orientation="horizontal">
-                <com.cunoraz.gifview.library.GifView
-                    android:id="@+id/gifview"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    custom:gif="@mipmap/heartgif"/>
 
-                <TextView
-                    android:id="@+id/heart"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="120"
-                    android:textSize="18sp"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"/>
-                <com.cunoraz.gifview.library.GifView
-                    android:id="@+id/pulsegif"
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="150dp"
-                    android:layout_height="200dp"
-                    custom:gif="@mipmap/puslso"/>
-            </LinearLayout>
 
-        </android.support.v7.widget.CardView>
-        <android.support.v7.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            app:cardElevation="8dp"
-            app:cardCornerRadius="8dp"
-            >
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
 
-                android:orientation="horizontal">
-                <com.cunoraz.gifview.library.GifView
-                    android:id="@+id/cal"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    custom:gif="@mipmap/calories"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Calories:"
-                    android:textSize="18sp"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"/>
-                <TextView
-                    android:id="@+id/calories"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="150"
-                    android:textSize="18sp"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"/>
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Kal"
-                    android:textSize="18sp"
-                    android:textColor="@color/colorPrimary"
-                   android:layout_marginLeft="5dp"
-                    android:layout_marginTop="20dp"/>
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-    </GridLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

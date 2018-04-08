@@ -89,7 +89,7 @@ public class UserActivity extends AppCompatActivity{
                         .withIcon(getResources().getDrawable(R.drawable.ic_date_range_grey_400_24dp))
                         .withName(R.string.event_activity_title)
                         .withIconTintingEnabled(true)
-                        .withIdentifier(7);
+                        .withIdentifier(9);
 
 
 
@@ -102,7 +102,13 @@ public class UserActivity extends AppCompatActivity{
                         .withIdentifier(3),
                 secItem3 = new SecondaryDrawerItem()
                         .withName(R.string.drawer_cancel)
-                        .withIdentifier(4);
+                        .withIdentifier(4),
+                secItem4 = new SecondaryDrawerItem()
+                        .withName(R.string.start_item)
+                        .withIdentifier(7),
+                secItem5 = new SecondaryDrawerItem()
+                        .withName(R.string.history_item)
+                        .withIdentifier(8);
 
         mDrawer =  new DrawerBuilder()
                 .withToolbar(toolbar)
@@ -115,7 +121,10 @@ public class UserActivity extends AppCompatActivity{
                         secItem3,
                         item2,
                         item3,
+                        secItem4,
+                        secItem5,
                         item4
+
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -136,10 +145,13 @@ public class UserActivity extends AppCompatActivity{
                             case 4:
                                 changeActivity(CancelReservationActivity.class,false);
                                 return false;
-                            case 6 :
-                                changeActivity(Ehealth.class,false);
-                                return false;
                             case 7 :
+                                changeActivity(DeviceListActivity.class,false);
+                                return false;
+                            case 8 :
+                                changeActivity(HealthHistoryActivity.class,false);
+                                return false;
+                            case 9 :
                                 changeActivity(EventActivity.class,false);
                                 return false;
 

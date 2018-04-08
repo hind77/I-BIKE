@@ -43,6 +43,8 @@
     <string name="ehealth_title">E-Health</string>
     <string name="history_button">History</string>
     <string name="start_button">Start</string>
+    <string name="start_item">Start</string>
+    <string name="history_item">History</string>
 
     <!--general guide-->
     <string name="general_title">General options: </string>
@@ -70,7 +72,10 @@
     <string name="event_date">Date:</string>
     <string name="event_btn">Participate</string>
     <string name="event_activity_title">Events</string>
-
+    <!--Bluetooth-->
+    <string name="info_text">If no devices are listed please pair your device in Android settings</string>
+    <string name="none_paired">No devices have been paired</string>
+    <string name="devices_title">Bluetooth Devices</string>
 
 
 
