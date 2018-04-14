@@ -1,175 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    tools:context="com.hindou.smash.Ehealth">
+    tools:context=".Ehealth">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
-        >
+        android:id="@+id/appbar">
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            android:id="@+id/toolbar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            ></android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
-
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/testView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/txtString"
-                android:text=""
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/txtString"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_alignLeft="@+id/testView1"
-                android:layout_alignParentBottom="true"
-                android:text=""
-                android:textSize="15sp" />
-
-            <Button
-                android:id="@+id/buttonOn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:text="LED ON" />
-
-            <Button
-                android:id="@+id/buttonOff"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/buttonOn"
-                android:layout_alignParentRight="true"
-                android:text="LED OFF" />
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_centerInParent="true">
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true">
-
-                    <ProgressBar
-                        android:id="@+id/progressBar1"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_centerInParent="true"
-                        android:indeterminate="false"
-                        android:max="100"
-                        android:progress="0"
-                        android:progressDrawable="@drawable/custom_temp_progressbar"
-                        android:secondaryProgress="0" />
-
-
-                    <TextView
-                        android:id="@+id/sensorView0"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="196dp"
-                        android:text="= ????"
-                        android:layout_alignBottom="@+id/progressBar1"
-                        android:layout_centerInParent="true"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true">
-                    <ProgressBar
-                        android:id="@+id/progressBar2"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_centerInParent="true"
-
-                        android:indeterminate="false"
-                        android:max="200"
-                        android:progress="0"
-                        android:progressDrawable="@drawable/custom_heart_progressbar"
-                        android:secondaryProgress="0" />
-                    <TextView
-                        android:id="@+id/sensorView1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/progressBar2"
-                        android:layout_centerInParent="true"
-                        android:layout_centerHorizontal="true"
-                        android:text="= ????"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
-                </RelativeLayout>
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-
-
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        >
-    <Button
-        android:id="@+id/startb"
-        android:layout_width="wrap_content"
+        android:id="@+id/tab_layout"
+        android:layout_below="@+id/appbar"
+        android:background="@color/colorPrimary"
+        app:tabTextColor="@color/backgroundColor"/>
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-       android:layout_gravity="center"
-       android:text="@string/start_button"
-        android:textColor="@color/ButtonsTextColors"
-        android:background="@drawable/sing_in_btn"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"></Button>
-        <Button
-            android:id="@+id/saveb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-           android:text="@string/save_button"
-            android:textColor="@color/ButtonsTextColors"
-            android:background="@drawable/sing_in_btn"
-            android:layout_marginTop="10dp"
-
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="20dp"></Button>
-        <Button
-            android:id="@+id/showb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/history_button"
-            android:textColor="@color/ButtonsTextColors"
-            android:background="@drawable/sing_in_btn"
-            android:layout_marginTop="10dp"
-
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="20dp"></Button>
-    </LinearLayout>
+        android:layout_below="@+id/tab_layout"
+        android:id="@+id/view_pager"/>
 
 
-
-
-
-</LinearLayout>
+</RelativeLayout>

@@ -76,6 +76,25 @@
     <string name="info_text">If no devices are listed please pair your device in Android settings</string>
     <string name="none_paired">No devices have been paired</string>
     <string name="devices_title">Bluetooth Devices</string>
+    <!--tabLayoutinfo-->
+    <string name="send_btn">Send</string>
+    <string name="gender_text">Gender</string>
+    <string name="male_text">Male</string>
+    <string name="female_text">Female</string>
+    <string name="weight_text">Weight</string>
+    <string name="age_text">Age</string>
+    <string name="kg_text">Kg</string>
+
+    <!--tabLayouthealth-->
+    <string name="save_btn">Save</string>
+    <string name="Start_btn">Start</string>
+    <string name="Stop_btn">Stop</string>
+    <string name="health_frag_title">Health</string>
+    <!--tabLayoutDrink-->
+    <string name="add_water">How much you drinked?</string>
+    <string name="water_unit">mL</string>
+    <string name="add_water_btn">Add</string>
+    <string name="water_title">Add Water</string>
 
 
 
