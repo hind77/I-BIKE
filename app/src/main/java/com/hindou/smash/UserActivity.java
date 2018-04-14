@@ -61,8 +61,10 @@ public class UserActivity extends AppCompatActivity{
                 .withHeaderBackground(R.drawable.header_background)
                 .addProfiles(
                         new ProfileDrawerItem()
+                                .withIcon(R.drawable.heliantha)
                                 .withName(connectedUser.getFname() + " " + connectedUser.getLname())
                                 .withEmail(connectedUser.getEmail())
+
                 )
                 .build();
 

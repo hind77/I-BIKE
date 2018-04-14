@@ -15,5 +15,6 @@
     <color name="cancel_reseve_button_color">#e4c330</color>
     <color name="heliantha">#c0fc34</color>
     <color name="event">#e75323</color>
+    <color name="info_btn">#fee187</color>
 
 </resources>
