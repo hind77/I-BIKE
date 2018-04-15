@@ -107,6 +107,7 @@ public class InfoFragementActivity extends Fragment {
                     health.setAge(healthInfo.getAge());
                     health.setGender(healthInfo.getGender());
                     health.setWeight(healthInfo.getWeight());
+
                 }
             }, new Realm.Transaction.OnSuccess() {
                 @Override
