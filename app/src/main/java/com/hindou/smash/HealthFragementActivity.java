@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -35,12 +36,16 @@ import io.realm.RealmResults;
 
 public class HealthFragementActivity extends Fragment {
     View view;
+    Button start,stop;
    RadioButton male,female;
    RadioGroup sexe;
     TextView txtArduino, txtString, txtStringLength, sensorView0, sensorView1, calories;
     Handler bluetoothIn;
+    boolean startstop;
     private Realm realm;
     private RealmResults<HealthInfo> list;
+    private MyAsync myAsync;
+    int count =0;
 
     final int handlerState = 0;                        //used to identify handler message
     private BluetoothAdapter btAdapter = null;
@@ -69,33 +74,33 @@ public class HealthFragementActivity extends Fragment {
         sexe = view.findViewById(R.id.gender);
         male = (RadioButton) view.findViewById(R.id.male);
         female = (RadioButton) view.findViewById(R.id.female);
+        start = (Button) view.findViewById(R.id.start);
+        stop = (Button) view.findViewById(R.id.stop);
         realm = Realm.getDefaultInstance();
+        list = ((Ehealth)getActivity()).list;
         Log.d("realm", "Health info Activity Triggered");
         //list = realm.where(HealthInfo.class).findAll();
-        list = ((Ehealth)getActivity()).list;
-        if (list.size() > 0){
-            int selectedGender = list.get(0).getGender();        int time =1;
-            int weightint = list.get(0).getWeight();
-            int ageint = list.get(0).getAge();
-
-
-            Log.d("realm sg", String.valueOf(selectedGender));
-            Log.d("realm male", String.valueOf(R.id.male));
-            Log.d("realm female", String.valueOf(R.id.female));
-
-
-
-
-            if (selectedGender == R.id.male){
-                int cal = (int)((-55.0969 + (0.6309 *100) + (0.1988 * weightint) + (0.2017 * ageint))/4.184) * 60 * time;
-
-                calories.setText(Integer.toString(cal));
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startstop = true;
+                myAsync = new MyAsync();
+                myAsync.execute(count);
             }
-            if (selectedGender == R.id.female){
-                int cal = (int) ((-20.4022 + (0.4472 * 100) - (0.1263 * weightint) + (0.074 * ageint))/4.184) * 60 * time;
-                calories.setText(Integer.toString(cal));
+        });
+        stop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               myAsync.cancel(true);
             }
-        }
+        });
+
+
+
+
+
+
+
 
 
 
@@ -120,11 +125,11 @@ public class HealthFragementActivity extends Fragment {
                         if (recDataString.charAt(0) == '#')                             //if it starts with # we know it is what we are looking for
                         {
                             String sensor0 = recDataString.substring(1, 5);             //get sensor value from string between indices 1-5
-                            String sensor1 = recDataString.substring(7, 10);            //same again...
-
+                            String sensor1 = recDataString.substring(7, 10);//same again...
+                            if (sensor1.contains("~")) sensor1 = sensor1.substring(0,2);
 
                             sensorView0.setText(sensor0 + "°C");    //update the textviews with sensor values
-                            sensorView1.setText(sensor1 + "BPM");
+                            sensorView1.setText(sensor1);
 
 
                         }
@@ -239,7 +244,8 @@ public class HealthFragementActivity extends Fragment {
                 tmpIn = socket.getInputStream();
                 tmpOut = socket.getOutputStream();
 
-            } catch (IOException e) { }
+            } catch (IOException e) {
+            }
 
             mmInStream = tmpIn;
             mmOutStream = tmpOut;
@@ -278,4 +284,76 @@ public class HealthFragementActivity extends Fragment {
             }
         }
     }
+        private class MyAsync extends AsyncTask<Integer,Integer,Integer>{
+            private int counter;
+            int selectedGender;
+            int weightint;
+            int ageint;
+            int heartbeat;
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                selectedGender = list.get(0).getGender();
+                Log.d("selectedGender",String.valueOf(list.get(0).getGender()));
+                weightint = list.get(0).getWeight();
+                Log.d("weight",String.valueOf(list.get(0).getWeight()));
+                ageint = list.get(0).getAge();
+                Log.d("age",String.valueOf(list.get(0).getAge()));
+                String values = sensorView1.getText().toString().replaceAll("~","");
+                heartbeat = Integer.valueOf(values);
+                counter = 0;
+
+            }
+
+            @Override
+            protected Integer doInBackground(Integer... integers) {
+                counter=integers[0];
+                int cal =0;
+                while(startstop){
+                    try {
+                        Thread.sleep(1000);
+                        counter++;
+
+                        if (selectedGender == R.id.male) {
+                            cal = (int) ((-55.0969 + (0.6309 * heartbeat) + (0.1988 * weightint) + (0.2017 * ageint)) / 4.184) * 60 * (counter )/36;
+                            publishProgress(cal);
+                        }
+                        if (selectedGender == R.id.female){
+                            cal = (int) ((-20.4022 + (0.4472 * heartbeat) - (0.1263 * weightint) + (0.074 * ageint))/4.184) * 60 * (counter )/36;
+
+                            publishProgress(cal);
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    if (isCancelled()){
+                        break;
+                    }
+                }
+                Log.d("cal",String.valueOf(cal));
+                return cal;
+            }
+
+            @Override
+            protected void onProgressUpdate(Integer... values) {
+                super.onProgressUpdate(values);
+                calories.setText(Integer.toString(values[0]));
+                Log.d("values0",Integer.toString(values[0]));
+            }
+
+            @Override
+            protected void onPostExecute(Integer integer) {
+                super.onPostExecute(integer);
+                calories.setText(Integer.toString(integer)+" Cal");
+                count=integer;
+                Log.d("integer",Integer.toString(integer));
+
+            }
+
+            @Override
+            protected void onCancelled(Integer integer) {
+                super.onCancelled(integer);
+            }
+        }
+
 }

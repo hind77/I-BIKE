@@ -97,6 +97,8 @@
                     android:layout_centerHorizontal="true"
                     android:text=""
                     android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
             </RelativeLayout>
 
 
@@ -145,12 +147,14 @@
         android:layout_below="@+id/layout2"
         android:layout_marginTop="60dp">
         <Button
+            android:id="@+id/start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/ButtonsTextColors"
             android:background="@drawable/sing_in_btn"
             android:text="@string/Start_btn"/>
         <Button
+            android:id="@+id/stop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -159,6 +163,7 @@
             android:text="@string/Stop_btn"
             android:background="@drawable/sing_in_btn"/>
         <Button
+            android:id="@+id/save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/ButtonsTextColors"
