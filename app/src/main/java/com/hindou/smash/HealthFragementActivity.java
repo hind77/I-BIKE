@@ -336,6 +336,7 @@ public class HealthFragementActivity extends Fragment {
 
             @Override
             protected void onProgressUpdate(Integer... values) {
+                // comm
                 super.onProgressUpdate(values);
                 calories.setText(Integer.toString(values[0]));
                 Log.d("values0",Integer.toString(values[0]));
