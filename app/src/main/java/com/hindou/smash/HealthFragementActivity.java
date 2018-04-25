@@ -125,8 +125,8 @@ public class HealthFragementActivity extends Fragment {
                         if (recDataString.charAt(0) == '#')                             //if it starts with # we know it is what we are looking for
                         {
                             String sensor0 = recDataString.substring(1, 5);             //get sensor value from string between indices 1-5
-                            String sensor1 = recDataString.substring(7, 10);            //same again...
-
+                            String sensor1 = recDataString.substring(7, 10);//same again...
+                            if (sensor1.contains("~")) sensor1 = sensor1.substring(0,2);
 
                             sensorView0.setText(sensor0 + "°C");    //update the textviews with sensor values
                             sensorView1.setText(sensor1);
@@ -299,7 +299,8 @@ public class HealthFragementActivity extends Fragment {
                 Log.d("weight",String.valueOf(list.get(0).getWeight()));
                 ageint = list.get(0).getAge();
                 Log.d("age",String.valueOf(list.get(0).getAge()));
-                heartbeat = Integer.valueOf(sensorView1.getText().toString());
+                String values = sensorView1.getText().toString().replaceAll("~","");
+                heartbeat = Integer.valueOf(values);
                 counter = 0;
 
             }
@@ -314,11 +315,11 @@ public class HealthFragementActivity extends Fragment {
                         counter++;
 
                         if (selectedGender == R.id.male) {
-                            cal = (int) ((-55.0969 + (0.6309 * heartbeat) + (0.1988 * weightint) + (0.2017 * ageint)) / 4.184) * 60 * (counter )/3600;
+                            cal = (int) ((-55.0969 + (0.6309 * heartbeat) + (0.1988 * weightint) + (0.2017 * ageint)) / 4.184) * 60 * (counter )/36;
                             publishProgress(cal);
                         }
                         if (selectedGender == R.id.female){
-                            cal = (int) ((-20.4022 + (0.4472 * heartbeat) - (0.1263 * weightint) + (0.074 * ageint))/4.184) * 60 * (counter )/3600;
+                            cal = (int) ((-20.4022 + (0.4472 * heartbeat) - (0.1263 * weightint) + (0.074 * ageint))/4.184) * 60 * (counter )/36;
 
                             publishProgress(cal);
                         }
@@ -343,7 +344,7 @@ public class HealthFragementActivity extends Fragment {
             @Override
             protected void onPostExecute(Integer integer) {
                 super.onPostExecute(integer);
-                calories.setText(Integer.toString(integer));
+                calories.setText(Integer.toString(integer)+" Cal");
                 count=integer;
                 Log.d("integer",Integer.toString(integer));
 

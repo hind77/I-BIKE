@@ -62,6 +62,7 @@ public class DrinkFragementActivity extends Fragment {
         //get all database lines of HealthInfo class/table
         list = ((Ehealth)getActivity()).list2;
 
+        progressBar.setProgress(list.get(0).getDrink());
 
         imageButton.setOnClickListener(new View.OnClickListener(){
 
@@ -112,7 +113,9 @@ public class DrinkFragementActivity extends Fragment {
                                                     mCongraDialog = new MaterialDialog.Builder(getContext())
                                                             .title(R.string.congra_title)
                                                             .customView(R.layout.congratulation_water, true).show();
-                                                    progressBar.setProgress(0);}
+                                                    progressBar.setProgress(0);
+                                                    waterDrink.setDrink(0);
+                                                }
 
                                             }
                                         });
