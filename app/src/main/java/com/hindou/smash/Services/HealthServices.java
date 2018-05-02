@@ -79,22 +79,18 @@ public class HealthServices extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        checkBTState();
-    }
 
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
         Realm.init(this);
         realm = Realm.getDefaultInstance();
         list = realm.where(HealthInfo.class).findAll();
-        address = intent.getStringExtra(EXTRA_DEVICE_ADDRESS);
+
+
         Log.d("add", String.valueOf(address) );
         Log.d("realm", "Health info Activity Triggered");
         //list = realm.where(HealthInfo.class).findAll();
-       if(startstop){
-        myAsync = new MyAsync();
-        myAsync.execute(count);}
+        if(startstop){
+            myAsync = new MyAsync();
+            myAsync.execute(count);}
         bluetoothIn = new Handler() {
             public void handleMessage(android.os.Message msg) {
 
@@ -162,6 +158,13 @@ public class HealthServices extends Service {
         mConnectedThread.write("x");
         btAdapter = BluetoothAdapter.getDefaultAdapter();       // get Bluetooth adapter
         checkBTState();
+
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        address = intent.getStringExtra(EXTRA_DEVICE_ADDRESS);
         return START_STICKY;
     }
     private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {
