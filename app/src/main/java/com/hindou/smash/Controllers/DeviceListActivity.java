@@ -1,4 +1,4 @@
-package com.hindou.smash;
+package com.hindou.smash.Controllers;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -17,7 +17,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hindou.smash.Models.Health;
 import com.hindou.smash.Models.User;
+import com.hindou.smash.R;
+import com.hindou.smash.Services.HealthServices;
 import com.hindou.smash.utils.SessionsManager;
 
 import java.util.Set;
@@ -142,9 +145,12 @@ public class DeviceListActivity extends AppCompatActivity {
             String address = info.substring(info.length() - 17);
 
             // Make an intent to start next activity while taking an extra which is the MAC address.
-            Intent i = new Intent(DeviceListActivity.this, Ehealth.class);
+            Intent i = new Intent(DeviceListActivity.this, HealthServices.class);
             i.putExtra(EXTRA_DEVICE_ADDRESS, address);
-            startActivity(i);
+            mContext.startService(i);
+           Intent i1 = new Intent(DeviceListActivity.this,Ehealth.class);
+           startActivity(i1);
+
         }
     };
 

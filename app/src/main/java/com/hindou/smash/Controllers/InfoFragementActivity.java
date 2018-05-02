@@ -1,4 +1,4 @@
-package com.hindou.smash;
+package com.hindou.smash.Controllers;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,10 +12,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.hindou.smash.Models.Health;
 import com.hindou.smash.Models.HealthInfo;
+import com.hindou.smash.R;
 
 import io.realm.Realm;
 import io.realm.RealmResults;

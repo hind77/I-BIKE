@@ -1,4 +1,4 @@
-package com.hindou.smash;
+package com.hindou.smash.Controllers;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +19,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.hindou.smash.Models.Event;
 
 import com.hindou.smash.Models.User;
-import com.hindou.smash.adapter.EventAdapter;
+import com.hindou.smash.R;
+import com.hindou.smash.Adapters.EventAdapter;
 
 import com.hindou.smash.utils.GlobalVars;
 import com.hindou.smash.utils.SessionsManager;

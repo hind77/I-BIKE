@@ -1,4 +1,4 @@
-package com.hindou.smash;
+package com.hindou.smash.Controllers;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -32,6 +32,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.hindou.smash.Models.User;
+import com.hindou.smash.R;
 import com.hindou.smash.utils.GlobalVars;
 import com.hindou.smash.utils.SessionsManager;
 import com.hindou.smash.utils.VolleySingleton;

@@ -1,10 +1,11 @@
-package com.hindou.smash;
+package com.hindou.smash.Controllers;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.hindou.smash.R;
 import com.hindou.smash.utils.GlobalVars;
 
 public class SplashActivity extends AppCompatActivity {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hindou.smash.StationRoutingActivity">
+    tools:context="com.hindou.smash.Controllers.StationRoutingActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -99,7 +99,7 @@
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="303dp"
-            tools:context="com.hindou.smash.StationRoutingActivity"
+            tools:context="com.hindou.smash.Controllers.StationRoutingActivity"
             android:layout_alignParentBottom="true"/>
     </RelativeLayout>
 

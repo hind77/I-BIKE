@@ -1,4 +1,4 @@
-package com.hindou.smash;
+package com.hindou.smash.Controllers;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,19 +8,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.hindou.smash.Models.User;
 import com.hindou.smash.Models.WaterDrink;
+import com.hindou.smash.R;
 import com.hindou.smash.utils.SessionsManager;
 
 import io.realm.Realm;
@@ -62,7 +59,7 @@ public class DrinkFragementActivity extends Fragment {
         //get all database lines of HealthInfo class/table
         list = ((Ehealth)getActivity()).list2;
 
-        progressBar.setProgress(list.get(0).getDrink());
+    //  progressBar.setProgress(list.get(0).getDrink());
 
         imageButton.setOnClickListener(new View.OnClickListener(){
 

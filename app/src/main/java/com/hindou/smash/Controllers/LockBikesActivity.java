@@ -1,4 +1,4 @@
-package com.hindou.smash;
+package com.hindou.smash.Controllers;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,12 +16,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.hindou.smash.Models.Bike;
 import com.hindou.smash.Models.Reservation;
 import com.hindou.smash.Models.User;
-import com.hindou.smash.adapter.BikeAdapter;
-import com.hindou.smash.adapter.CancelReservationAdapter;
-import com.hindou.smash.adapter.ReservationAdapter;
+import com.hindou.smash.R;
+import com.hindou.smash.Adapters.ReservationAdapter;
 import com.hindou.smash.utils.GlobalVars;
 import com.hindou.smash.utils.SessionsManager;
 import com.hindou.smash.utils.VolleySingleton;
@@ -36,7 +34,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CancelReservationActivity extends AppCompatActivity {
+public class LockBikesActivity extends AppCompatActivity {
 
     private SessionsManager sessionsManager;
     private User connectedUser;
@@ -44,14 +42,14 @@ public class CancelReservationActivity extends AppCompatActivity {
     private Context mContext;
 
     private RecyclerView mReservationList;
-    private CancelReservationAdapter mAdapter;
+    private ReservationAdapter mAdapter;
     private List<Reservation> mReservationSrcList;
     private MaterialDialog mLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cancel_reservation);
+        setContentView(R.layout.activity_lock_bikes);
         sessionsManager = SessionsManager.getInstance(this);
 
         if (!sessionsManager.isActive()){
@@ -62,12 +60,11 @@ public class CancelReservationActivity extends AppCompatActivity {
         }
     }
 
-
     private void initializeComponents(){
 
 
         //Set screen title
-        setTitle(R.string.cancel_activity_title);
+        setTitle(R.string.lock_activity_title);
 
         mContext = this;
         mReservationSrcList = new ArrayList<>();
@@ -82,9 +79,9 @@ public class CancelReservationActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        mReservationList = findViewById(R.id.reservation_list_cancel);
+        mReservationList = findViewById(R.id.reservation_list);
         mReservationList.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
-        mAdapter = new CancelReservationAdapter(mReservationSrcList, mContext);
+        mAdapter = new ReservationAdapter(mReservationSrcList, mContext);
         mReservationList.setAdapter(mAdapter);
 
         mLoader = new MaterialDialog.Builder(this)
@@ -95,8 +92,6 @@ public class CancelReservationActivity extends AppCompatActivity {
 
 
     private void getReservations(){
-
-
         StringRequest request = new StringRequest(Request.Method.POST, GlobalVars.API_URL + "getReservation.php",
                 new Response.Listener<String>() {
                     @Override
@@ -116,10 +111,8 @@ public class CancelReservationActivity extends AppCompatActivity {
                                                     data.getJSONObject(i).getString("name"),
                                                     data.getJSONObject(i).getString("duration"),
                                                     data.getJSONObject(i).getString("timestamp")
-
                                             )
                                     );
-
 
                                 }
 
@@ -162,7 +155,7 @@ public class CancelReservationActivity extends AppCompatActivity {
     }
 
     private void changeActivity(Class<?> destination, boolean flag) {
-        Intent intent = new Intent(CancelReservationActivity.this, destination);
+        Intent intent = new Intent(LockBikesActivity.this, destination);
         startActivity(intent);
         if(flag) finish();
     }

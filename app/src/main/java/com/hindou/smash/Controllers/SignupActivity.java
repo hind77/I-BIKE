@@ -1,4 +1,4 @@
-package com.hindou.smash;
+package com.hindou.smash.Controllers;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.hindou.smash.Models.User;
+import com.hindou.smash.R;
 import com.hindou.smash.utils.GlobalVars;
 import com.hindou.smash.utils.SessionsManager;
 import com.hindou.smash.utils.VolleySingleton;

@@ -1,4 +1,4 @@
-package com.hindou.smash;
+package com.hindou.smash.Controllers;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.hindou.smash.Models.User;
+import com.hindou.smash.R;
 import com.hindou.smash.utils.SessionsManager;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;

@@ -21,9 +21,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".StationActivity" />
+        <activity android:name=".Controllers.SplashActivity" />
+        <activity android:name=".Controllers.LoginActivity" />
+        <activity android:name=".Controllers.StationActivity" />
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -32,22 +32,28 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAkR_UI7n_r7CtiiGZh2_N22ogxTO9Jq1I" />
 
-        <activity android:name=".SignupActivity" />
-        <activity android:name=".StationRoutingActivity" />
-        <activity android:name=".UserActivity">
+        <activity android:name=".Controllers.SignupActivity" />
+        <activity android:name=".Controllers.StationRoutingActivity" />
+        <activity android:name=".Controllers.UserActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ReserveActivity" />
-        <activity android:name=".LockBikesActivity" />
-        <activity android:name=".CancelReservationActivity"></activity>
-        <activity android:name=".Ehealth"></activity>
-        <activity android:name=".DeviceListActivity"></activity>
-        <activity android:name=".HealthHistoryActivity"></activity>
-        <activity android:name=".EventActivity"></activity>
+        <activity android:name=".Controllers.ReserveActivity" />
+        <activity android:name=".Controllers.LockBikesActivity" />
+        <activity android:name=".Controllers.CancelReservationActivity"></activity>
+        <activity android:name=".Controllers.Ehealth"></activity>
+        <activity android:name=".Controllers.DeviceListActivity"></activity>
+        <activity android:name=".Controllers.HealthHistoryActivity"></activity>
+        <activity android:name=".Controllers.EventActivity"></activity>
+        <service android:name=".Services.HealthServices"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.hindou.smash.Services.HealthServices"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
