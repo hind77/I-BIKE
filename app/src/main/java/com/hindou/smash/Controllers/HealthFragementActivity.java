@@ -4,12 +4,15 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -44,14 +47,15 @@ import static com.google.android.gms.cast.CastRemoteDisplayLocalService.stopServ
 
 public class HealthFragementActivity extends Fragment {
     View view;
-    Button start, stop;
+    Button  stop;
     RadioButton male, female;
     RadioGroup sexe;
     TextView txtArduino, txtString, txtStringLength, sensorView0, sensorView1, calories;
     String cal,temp,beats;
-    BroadcastReceiver receiver;
+    private BroadcastReceiver receiver;
 
-
+    HealthServices healthData;
+    boolean bound = false;
     // SPP UUID service - this should work for most devices
     private static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
@@ -60,6 +64,19 @@ public class HealthFragementActivity extends Fragment {
     public HealthFragementActivity(){
 
     }
+    ServiceConnection mServiceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+        HealthServices.HealthServicesBinder HSB = (HealthServices.HealthServicesBinder) iBinder;
+        healthData =  HSB.getBinder();
+        bound = true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+        bound = false;
+        }
+    };
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -68,53 +85,42 @@ public class HealthFragementActivity extends Fragment {
         sensorView0 = (TextView) view.findViewById(R.id.sensorView0);
         sensorView1 = (TextView) view.findViewById(R.id.sensorView1);
         calories = (TextView) view.findViewById(R.id.calories_data);
+        stop = (Button) view.findViewById(R.id.stop);
 
-
-
-        //list = realm.where(HealthInfo.class).findAll();
-        /*start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startstop = true;
-                myAsync = new MyAsync();
-                myAsync.execute(count);
-            }
-        });
         stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               myAsync.cancel(true);
+                getActivity().stopService(new Intent(getContext(),HealthServices.class));
+               HealthServices.startstop = false;
             }
-        });*/
-
-
-
-         receiver = new BroadcastReceiver(){
-            @Override
-            public void onReceive(Context context, Intent intent) {
-               cal = intent.getStringExtra("calories");
-               temp = intent.getStringExtra("temp");
-               beats = intent.getStringExtra("beats");
-
-                //or
-                //exercises = ParseJSON.ChallengeParseJSON(intent.getStringExtra(MY_KEY));
-                sensorView0.setText(temp);
-                sensorView1.setText(beats);
-                calories.setText(cal);
-
-            }
-        };
-
-
-
-
-
-
-
-
-
+        });
+        Intent intent = new Intent(getContext(),HealthServices.class);
+        getContext().bindService(intent,mServiceConnection,getContext().BIND_AUTO_CREATE);
+        Log.d("temp",""+temp);
+        sensorView0.setText(temp);
+        sensorView1.setText(beats);
+        calories.setText(cal);
 
     }
+
+  /*  private  void showData(){
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                if (healthData!=null){
+                    temp =healthData.gettemp();
+                    beats = healthData.getheart();
+
+                }
+                Log.d("temp",""+temp);
+                Log.d("beats",""+beats);
+                sensorView0.setText(temp);
+                sensorView1.setText(beats);
+                handler.postDelayed(this,1000);
+            }
+        });
+    }*/
 
     @Nullable
     @Override
@@ -129,7 +135,23 @@ public class HealthFragementActivity extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        getActivity().registerReceiver(receiver, new IntentFilter(getActivity().getPackageName()));
+       receiver = new BroadcastReceiver() {
+           IntentFilter intentFilter = new IntentFilter(
+                   "datash");
+
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                temp = intent.getStringExtra("temp");
+                beats = intent.getStringExtra("beat");
+                cal = intent.getStringExtra("cal");
+
+                //or
+                //exercises = ParseJSON.ChallengeParseJSON(intent.getStringExtra(MY_KEY));
+
+            }
+        };
+        getActivity().registerReceiver(receiver, new IntentFilter("datash"));
+
 
     }
 
@@ -137,7 +159,12 @@ public class HealthFragementActivity extends Fragment {
     public void onPause()
     {
         super.onPause();
-        getActivity().unregisterReceiver(receiver);
+
+       /* if (bound){
+            getContext().unbindService(mServiceConnection);
+            bound = false;
+        }*/
+        getActivity().unregisterReceiver(this.receiver);
 
     }
 
