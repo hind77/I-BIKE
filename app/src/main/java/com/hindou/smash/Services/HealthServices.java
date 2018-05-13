@@ -119,8 +119,9 @@ public class HealthServices extends Service {
                             sensor0 = recDataString.substring(1, 5);             //get sensor value from string between indices 1-5
                             sensor1 = recDataString.substring(7, 10);
                             startstop= true;
+                            if (list.size()>0){
                             myAsync = new MyAsync();
-                            myAsync.execute(count);
+                            myAsync.execute(count);}
 
                             Log.d("Sensor inside bt", sensor0 + "|" + sensor1);
                             //same again...
@@ -318,24 +319,25 @@ public class HealthServices extends Service {
             notification = mBuilder.build();
             notification.flags |= Notification.FLAG_AUTO_CANCEL;
 
-            notificationManager.notify(1, notification);
+            //notificationManager.notify(1, notification);
+                selectedGender = list.get(0).getGender();
+                Log.d("selectedGender", String.valueOf(list.get(0).getGender()));
+                weightint = list.get(0).getWeight();
+                Log.d("weight", String.valueOf(list.get(0).getWeight()));
+                ageint = list.get(0).getAge();
+                Log.d("age", String.valueOf(list.get(0).getAge()));
 
-            selectedGender = list.get(0).getGender();
-            Log.d("selectedGender", String.valueOf(list.get(0).getGender()));
-            weightint = list.get(0).getWeight();
-            Log.d("weight", String.valueOf(list.get(0).getWeight()));
-            ageint = list.get(0).getAge();
-            Log.d("age", String.valueOf(list.get(0).getAge()));
+                // heartbeat = Integer.valueOf(sensor1);
+                Log.d("sens0", "" + sensor0);
+                Log.d("sens1", "" + sensor1);
 
-           // heartbeat = Integer.valueOf(sensor1);
-            Log.d("sens0",""+sensor0);
-            Log.d("sens1",""+sensor1);
-
-            heartbeat = Integer.valueOf(sensor1.replace("~", ""));
-            Log.d("heart",""+ String.valueOf(heartbeat) );
+                heartbeat = Integer.valueOf(sensor1.replace("~", ""));
+                Log.d("heart", "" + String.valueOf(heartbeat));
 
 
-            //counter = 0;
+                //counter = 0;
+
+
 
 
         }

@@ -59,7 +59,7 @@ public class DrinkFragementActivity extends Fragment {
         //get all database lines of HealthInfo class/table
         list = ((Ehealth)getActivity()).list2;
 
-    //  progressBar.setProgress(list.get(0).getDrink());
+    progressBar.setProgress(list.get(0).getDrink());
 
         imageButton.setOnClickListener(new View.OnClickListener(){
 
@@ -77,8 +77,8 @@ public class DrinkFragementActivity extends Fragment {
                                 connectedUser = SessionsManager.getInstance(getContext()).getUser();
                                  drink = itemView.findViewById(R.id.drink);
                                  valueDrink =Integer.valueOf(drink.getText().toString());
-                                Log.d("realm item", String.valueOf(list.get(0).getDrink()));
-                                Log.d("drink",String.valueOf(valueDrink));
+                               Log.d("realm item",""+list.get(0).getDrink());
+                                //Log.d("drink",String.valueOf(valueDrink));
                                 if(!drink.getText().toString().equals("")) {
                                     final WaterDrink waterDrink = new WaterDrink(progressBar.getProgress());
                                     //test if the database has a record of drink water
