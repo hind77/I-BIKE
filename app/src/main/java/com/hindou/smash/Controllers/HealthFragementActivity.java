@@ -28,7 +28,10 @@ import android.widget.Toast;
 import com.hindou.smash.Models.Health;
 import com.hindou.smash.Models.HealthInfo;
 import com.hindou.smash.R;
+import com.hindou.smash.Services.BusStation;
 import com.hindou.smash.Services.HealthServices;
+import com.hindou.smash.Services.Message;
+import com.squareup.otto.Subscribe;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -64,19 +67,9 @@ public class HealthFragementActivity extends Fragment {
     public HealthFragementActivity(){
 
     }
-    ServiceConnection mServiceConnection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-        HealthServices.HealthServicesBinder HSB = (HealthServices.HealthServicesBinder) iBinder;
-        healthData =  HSB.getBinder();
-        bound = true;
-        }
 
-        @Override
-        public void onServiceDisconnected(ComponentName componentName) {
-        bound = false;
-        }
-    };
+
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -94,12 +87,9 @@ public class HealthFragementActivity extends Fragment {
                HealthServices.startstop = false;
             }
         });
-        Intent intent = new Intent(getContext(),HealthServices.class);
-        getContext().bindService(intent,mServiceConnection,getContext().BIND_AUTO_CREATE);
-        Log.d("temp",""+temp);
-        sensorView0.setText(temp);
-        sensorView1.setText(beats);
-        calories.setText(cal);
+
+
+
 
     }
 
@@ -133,43 +123,38 @@ public class HealthFragementActivity extends Fragment {
 
 
     @Override
+    public void onStart() {
+        super.onStart();
+
+
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
-       receiver = new BroadcastReceiver() {
-           IntentFilter intentFilter = new IntentFilter(
-                   "datash");
-
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                temp = intent.getStringExtra("temp");
-                beats = intent.getStringExtra("beat");
-                cal = intent.getStringExtra("cal");
-
-                //or
-                //exercises = ParseJSON.ChallengeParseJSON(intent.getStringExtra(MY_KEY));
-
-            }
-        };
-        getActivity().registerReceiver(receiver, new IntentFilter("datash"));
-
-
+        BusStation.getBus().register(this);
     }
 
     @Override
     public void onPause()
     {
         super.onPause();
+        BusStation.getBus().unregister(this);
 
-       /* if (bound){
-            getContext().unbindService(mServiceConnection);
-            bound = false;
-        }*/
-        getActivity().unregisterReceiver(this.receiver);
+
+
+    }
+    @Subscribe
+    public void receiveMsg(Message msg){
+        sensorView0.setText(msg.getTemp());
+        Log.d("temp",""+msg.getTemp());
+        sensorView1.setText(msg.getHeartb());
+        calories.setText(msg.getCal());
 
     }
 
 
-    //create new class for connect thread
+
 
 
 

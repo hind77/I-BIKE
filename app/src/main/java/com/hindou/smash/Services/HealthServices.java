@@ -98,6 +98,7 @@ public class HealthServices extends Service {
         bluetoothIn = new Handler() {
             public void handleMessage(android.os.Message msg) {
 
+
                 if (msg.what == handlerState) {
                     //if message is what we want
                     // byte[] readBuf = (byte[]) msg.obj;
@@ -117,13 +118,14 @@ public class HealthServices extends Service {
                         {
                             sensor0 = recDataString.substring(1, 5);             //get sensor value from string between indices 1-5
                             sensor1 = recDataString.substring(7, 10);
+                            startstop= true;
+                            myAsync = new MyAsync();
+                            myAsync.execute(count);
+
+                            Log.d("Sensor inside bt", sensor0 + "|" + sensor1);
                             //same again...
                             if (sensor1.contains("~")) sensor1 = sensor1.substring(0, 2);
-                            Intent intent = new Intent("datash"); //FILTER is a string to identify this intent
-                            intent.putExtra("cal", count);
-                            intent.putExtra("beat",sensor1);
-                            intent.putExtra("temp",sensor0);
-                            sendBroadcast(intent);
+
 
 
 
@@ -167,9 +169,9 @@ public class HealthServices extends Service {
         //I send a character when resuming.beginning transmission to check device is connected
         //If it is not an exception will be thrown in the write method and finish() will be called
         mConnectedThread.write("x");
-        startstop= true;
-        myAsync = new MyAsync();
-        myAsync.execute(count);
+        //startstop= true;
+        //myAsync = new MyAsync();
+        //myAsync.execute(count);
 
         return START_STICKY;
     }
@@ -326,13 +328,14 @@ public class HealthServices extends Service {
             Log.d("age", String.valueOf(list.get(0).getAge()));
 
            // heartbeat = Integer.valueOf(sensor1);
-            Log.d("sens0",""+gettemp());
-            Log.d("sens1",""+getheart());
-          heartbeat = 100;
-            Log.d("heart", String.valueOf(heartbeat) );
+            Log.d("sens0",""+sensor0);
+            Log.d("sens1",""+sensor1);
+
+            heartbeat = Integer.valueOf(sensor1.replace("~", ""));
+            Log.d("heart",""+ String.valueOf(heartbeat) );
 
 
-            counter = 0;
+            //counter = 0;
 
 
         }
@@ -375,16 +378,20 @@ public class HealthServices extends Service {
             Log.d("values0", Integer.toString(values[0]));
             contentView.setTextViewText(R.id.text,"cals: "+ String.valueOf(values[0])+"  temp: "+sensor0+"  beats: "+sensor1);
             notificationManager.notify(1, notification);
+            BusStation.getBus().post(new Message(values[0].toString(),sensor0.toString(),sensor1.toString()));
         }
 
         @Override
         protected void onPostExecute(Integer integer) {
             super.onPostExecute(integer);
 
-            count = integer;
-            contentView.setTextViewText(R.id.text,"cals: "+ String.valueOf(integer)+"  temp: "+sensor0+"  beats: "+sensor1);
-            notificationManager.notify(1, notification);
+            //count = integer;
+            //contentView.setTextViewText(R.id.text,"cals: "+ String.valueOf(integer)+"  temp: "+sensor0+"  beats: "+sensor1);
+            //notificationManager.notify(1, notification);
             Log.d("integer", Integer.toString(integer));
+
+
+            // sendBroadcast(intent);
 
 
 
