@@ -1,10 +1,8 @@
 package com.hindou.smash.utils;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 
-import com.hindou.smash.LoginActivity;
 import com.hindou.smash.Models.User;
 
 

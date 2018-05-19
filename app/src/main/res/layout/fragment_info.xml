@@ -130,6 +130,8 @@
             android:layout_below="@+id/age_layout"
             android:layout_marginTop="30dp"
             android:background="@drawable/info_btn"
+            android:layout_marginBottom="20dp"
+
             android:layout_centerHorizontal="true"/>
     </RelativeLayout>
 </RelativeLayout>

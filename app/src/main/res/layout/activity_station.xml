@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hindou.smash.StationActivity"
+    tools:context="com.hindou.smash.Controllers.StationActivity"
     android:id="@+id/mainholder">
 
     <android.support.design.widget.AppBarLayout
@@ -27,7 +27,7 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.hindou.smash.StationActivity"
+        tools:context="com.hindou.smash.Controllers.StationActivity"
         android:layout_marginTop="?attr/actionBarSize"/>
 
 </android.support.design.widget.CoordinatorLayout>
