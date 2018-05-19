@@ -29,9 +29,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <ImageView
                     android:id="@+id/station_image"
                     android:layout_width="140dp"
@@ -45,41 +47,41 @@
                     android:id="@+id/station_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/station_image"
                     android:layout_marginBottom="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:text="Station : "
                     android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:layout_below="@id/station_image"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/coordination_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Coordination "
-                    android:textStyle="bold"
                     android:layout_alignTop="@id/station_image"
-                    android:layout_toEndOf="@id/station_image"/>
+                    android:layout_toEndOf="@id/station_image"
+                    android:text="Coordination "
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/station_xy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="34.259063, -6.598524"
+                    android:layout_alignStart="@id/coordination_text"
                     android:layout_below="@id/coordination_text"
-                    android:layout_alignStart="@id/coordination_text"/>
+                    android:text="34.259063, -6.598524" />
 
 
                 <TextView
                     android:id="@+id/bikes_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bikes number :"
-                    android:textStyle="bold"
-                    android:layout_below="@id/station_xy"
                     android:layout_alignStart="@id/coordination_text"
-                    android:layout_marginTop="20dp"/>
+                    android:layout_below="@id/station_xy"
+                    android:layout_marginTop="20dp"
+                    android:text="Bikes number :"
+                    android:textStyle="bold" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
