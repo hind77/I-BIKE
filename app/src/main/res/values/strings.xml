@@ -97,6 +97,10 @@
     <string name="water_title">Add Water</string>
     <string name="congra">Nice you Drinked Enough Water!</string>
     <string name="congra_title">Congratulation</string>
+    <!--bikerInfo-->
+    <string name="distance">Distance</string>
+    <string name="speed">Speed</string>
+    <string name="duration">Duration</string>
 
 
 

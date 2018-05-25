@@ -44,7 +44,7 @@ public class DeviceListActivity extends AppCompatActivity {
     TextView textView1;
 
     // EXTRA string to send on to mainactivity
-    public static String EXTRA_DEVICE_ADDRESS = "the adress";
+    public static String add = "the adress";
 
     // Member fields
     private BluetoothAdapter mBtAdapter;
@@ -141,12 +141,12 @@ public class DeviceListActivity extends AppCompatActivity {
 
             textView1.setText("Connecting...");
             // Get the device MAC address, which is the last 17 chars in the View
-            String info = ((TextView) v).getText().toString();
-            String address = info.substring(info.length() - 17);
+           String info = ((TextView) v).getText().toString();
+           String address = info.substring(info.length() - 17);
 
             // Make an intent to start next activity while taking an extra which is the MAC address.
             Intent i = new Intent(DeviceListActivity.this, HealthServices.class);
-            i.putExtra(EXTRA_DEVICE_ADDRESS, address);
+            i.putExtra(add, address);
             mContext.startService(i);
            Intent i1 = new Intent(DeviceListActivity.this,Ehealth.class);
            startActivity(i1);

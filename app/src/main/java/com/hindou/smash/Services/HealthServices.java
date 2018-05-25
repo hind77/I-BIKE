@@ -33,7 +33,8 @@ import java.util.UUID;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
-import static com.hindou.smash.Controllers.DeviceListActivity.EXTRA_DEVICE_ADDRESS;
+
+import static com.hindou.smash.Controllers.DeviceListActivity.add;
 
 /**
  * Created by HP on 25/04/2018.
@@ -89,8 +90,8 @@ public class HealthServices extends Service {
         Realm.init(this);
         realm = Realm.getDefaultInstance();
         list = realm.where(HealthInfo.class).findAll();
-        address = intent.getStringExtra(EXTRA_DEVICE_ADDRESS);
-        Log.d("add", String.valueOf(address) );
+        address = intent.getStringExtra(add);
+        Log.d("add", ""+String.valueOf(address) );
         Log.d("realm", "Health info Activity Triggered");
 
         //list = realm.where(HealthInfo.class).findAll();

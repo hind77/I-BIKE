@@ -9,7 +9,7 @@ public class GlobalVars {
 
 
 
-    public static final String API_URL = "http://192.168.3.107/ibike/I-BIKE-web/api/";
+    public static final String API_URL = "http://192.168.1.101/ibike/I-BIKE-web/api/";
 
 
 
