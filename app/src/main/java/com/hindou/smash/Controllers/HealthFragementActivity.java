@@ -20,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -56,6 +57,7 @@ public class HealthFragementActivity extends Fragment {
     TextView txtArduino, txtString, txtStringLength, sensorView0, sensorView1, calories;
     String cal,temp,beats;
     private BroadcastReceiver receiver;
+    private ProgressBar progTemp,progBeat,progCal;
 
     HealthServices healthData;
     boolean bound = false;
@@ -79,6 +81,9 @@ public class HealthFragementActivity extends Fragment {
         sensorView1 = (TextView) view.findViewById(R.id.sensorView1);
         calories = (TextView) view.findViewById(R.id.calories_data);
         stop = (Button) view.findViewById(R.id.stop);
+        progTemp = (ProgressBar) view.findViewById(R.id.progressBar1);
+        progBeat = (ProgressBar) view.findViewById(R.id.progressBar2);
+        progCal = (ProgressBar) view.findViewById(R.id.progressBar3);
 
         stop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,10 +151,13 @@ public class HealthFragementActivity extends Fragment {
     }
     @Subscribe
     public void receiveMsg(Message msg){
-        sensorView0.setText(msg.getTemp());
+        sensorView0.setText(msg.getTemp()+" °C");
         Log.d("temp",""+msg.getTemp());
-        sensorView1.setText(msg.getHeartb());
-        calories.setText(msg.getCal());
+        sensorView1.setText(msg.getHeartb()+" bpm");
+        calories.setText(msg.getCal()+" Cal");
+       /* progTemp.setProgress(Integer.valueOf(msg.getTemp()));
+        progBeat.setProgress(Integer.valueOf(msg.getHeartb()));
+        progCal.setProgress(Integer.valueOf(msg.getCal()));*/
 
     }
 

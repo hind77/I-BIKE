@@ -10,13 +10,14 @@
     >
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/tint">
         <TextView
             android:id="@+id/testView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/txtString"
-            android:textColor="@color/ButtonsTextColors"
+            android:textColor="@color/tint"
             android:text=""
             android:textSize="15sp" />
 
@@ -25,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_alignLeft="@+id/testView1"
-            android:textColor="@color/ButtonsTextColors"
+            android:textColor="@color/tint"
             android:layout_alignParentBottom="true"
             android:text=""
             android:textSize="15sp" />
@@ -64,7 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:textColor="@color/tint"
+                    android:textColor="@color/ButtonsTextColors"
                     android:layout_marginTop="196dp"
                     android:text=""
                     android:layout_alignBottom="@+id/progressBar1"
@@ -92,7 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/progressBar2"
-                    android:textColor="@color/tint"
+                    android:textColor="@color/ButtonsTextColors"
                     android:layout_centerInParent="true"
                     android:layout_centerHorizontal="true"
                     android:text=""
@@ -130,7 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/progressBar3"
-                    android:textColor="@color/tint"
+                    android:textColor="@color/ButtonsTextColors"
                     android:layout_centerInParent="true"
                     android:layout_centerHorizontal="true"
                     android:text=""
@@ -138,97 +139,7 @@
             </RelativeLayout>
 
         </LinearLayout>
-        <LinearLayout
-            android:id="@+id/speedlay"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_below="@+id/layout2">
-            <RelativeLayout
-                android:id="@+id/infospeed"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:background="@color/colorPrimary"
-                >
 
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/distance"
-                            android:text="@string/distance"
-                            android:layout_marginTop="30dp"
-                            android:textSize="18sp"
-                            android:textColor="@color/ButtonsTextColors"
-                            android:layout_marginLeft="10dp"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/distance_data"
-                            android:text="55.32 km's"
-                            android:layout_below="@+id/distance"
-                            android:layout_marginTop="10dp"
-                            android:textSize="18sp"
-                            android:textColor="@color/ButtonsTextColors"
-                            android:layout_marginLeft="10dp"
-
-                            />
-                <TextView
-                    android:id="@+id/speed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/distance"
-                android:layout_toRightOf="@+id/distance"
-                android:layout_marginTop="30dp"
-                android:text="@string/speed"
-                android:textSize="18sp"
-                android:textColor="@color/ButtonsTextColors"
-                android:layout_marginLeft="70dp"
-                />
-                <TextView
-                    android:id="@+id/speed_data"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/distance_data"
-                    android:layout_toRightOf="@+id/distance_data"
-                    android:layout_marginTop="10dp"
-                    android:text="10 km/hr"
-                    android:textSize="18sp"
-                    android:layout_below="@+id/speed"
-                    android:textColor="@color/ButtonsTextColors"
-                    android:layout_marginLeft="50dp"
-                    />
-                <TextView
-                    android:id="@+id/duration"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/speed"
-                    android:layout_toRightOf="@+id/speed"
-                    android:layout_marginTop="30dp"
-                    android:text="@string/duration"
-                    android:textSize="18sp"
-                    android:textColor="@color/ButtonsTextColors"
-                    android:layout_marginLeft="70dp"
-                    />
-                <TextView
-                    android:id="@+id/duration_data"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/speed_data"
-                    android:layout_toRightOf="@+id/speed_data"
-                    android:layout_marginTop="10dp"
-                    android:text="3 min"
-                    android:textSize="18sp"
-                    android:layout_below="@+id/duration"
-                    android:textColor="@color/ButtonsTextColors"
-                    android:layout_marginLeft="60dp"
-                    />
-
-
-
-            </RelativeLayout>
-        </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -237,7 +148,7 @@
         android:gravity="center"
 
         android:layout_below="@+id/layout2"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="50dp"
         android:layout_alignParentBottom="true">
         <Button
             android:id="@+id/stop"

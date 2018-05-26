@@ -57,7 +57,9 @@ public class Ehealth extends AppCompatActivity {
         ViewPagerAdapter Adapter = new ViewPagerAdapter(getSupportFragmentManager());
         Adapter.addFragment(new InfoFragementActivity(), "info");
         Adapter.addFragment(new HealthFragementActivity(), "health");
+        Adapter.addFragment(new BikerFragementActivity(),"User");
         Adapter.addFragment(new DrinkFragementActivity(),"Water Tracking");
+
         viewPager.setAdapter(Adapter);
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);

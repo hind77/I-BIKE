@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/infospeed"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimary"
+            >
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/distance"
+                android:text="@string/distance"
+                android:layout_marginTop="30dp"
+                android:textSize="18sp"
+                android:textColor="@color/ButtonsTextColors"
+                android:layout_marginLeft="10dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/distance_data"
+                android:text="55.32 km's"
+                android:layout_below="@+id/distance"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:textColor="@color/ButtonsTextColors"
+                android:layout_marginLeft="10dp"
+
+                />
+            <TextView
+                android:id="@+id/speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/distance"
+                android:layout_toRightOf="@+id/distance"
+                android:layout_marginTop="30dp"
+                android:text="@string/speed"
+                android:textSize="18sp"
+                android:textColor="@color/ButtonsTextColors"
+                android:layout_marginLeft="70dp"
+                />
+            <TextView
+                android:id="@+id/speed_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/distance_data"
+                android:layout_toRightOf="@+id/distance_data"
+                android:layout_marginTop="10dp"
+                android:text="10 km/hr"
+                android:textSize="18sp"
+                android:layout_below="@+id/speed"
+                android:textColor="@color/ButtonsTextColors"
+                android:layout_marginLeft="50dp"
+                />
+            <TextView
+                android:id="@+id/duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/speed"
+                android:layout_toRightOf="@+id/speed"
+                android:layout_marginTop="30dp"
+                android:text="@string/duration"
+                android:textSize="18sp"
+                android:textColor="@color/ButtonsTextColors"
+                android:layout_marginLeft="70dp"
+                />
+            <TextView
+                android:id="@+id/duration_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/speed_data"
+                android:layout_toRightOf="@+id/speed_data"
+                android:layout_marginTop="10dp"
+                android:text="3 min"
+                android:textSize="18sp"
+                android:layout_below="@+id/duration"
+                android:textColor="@color/ButtonsTextColors"
+                android:layout_marginLeft="60dp"
+                />
+
+
+
+
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+            <Button
+                android:id="@+id/start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="start" />
+
+            <Button
+                android:id="@+id/pause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="pause" />
+
+            <Button
+                android:id="@+id/stop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="stop" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -59,7 +59,7 @@ public class DrinkFragementActivity extends Fragment {
         //get all database lines of HealthInfo class/table
         list = ((Ehealth)getActivity()).list2;
 
-    progressBar.setProgress(list.get(0).getDrink());
+   // progressBar.setProgress(list.get(0).getDrink());
 
         imageButton.setOnClickListener(new View.OnClickListener(){
 
