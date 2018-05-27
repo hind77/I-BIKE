@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -92,6 +94,16 @@
 
 
         </RelativeLayout>
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            >
+
+        </fragment>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -101,21 +113,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="start" />
+                android:text="start"
+                android:textColor="@color/ButtonsTextColors"
+                android:background="@drawable/sing_in_btn"/>
 
             <Button
                 android:id="@+id/pause"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="pause" />
+                android:layout_marginLeft="20dp"
+                android:text="pause"
+                android:textColor="@color/ButtonsTextColors"
+                android:background="@drawable/sing_in_btn"/>
 
             <Button
                 android:id="@+id/stop"
+                android:textColor="@color/ButtonsTextColors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="stop" />
+                android:text="stop"
+                android:background="@drawable/sing_in_btn"/>
 
         </LinearLayout>
     </LinearLayout>
