@@ -22,6 +22,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -88,6 +90,7 @@ public class BikerFragementActivity extends android.support.v4.app.Fragment impl
     GeoFire geoFire;
     Marker mCurrent;
     private TextToSpeech tts;
+    private SupportMapFragment mapFragment;
 
 
     public BikerFragementActivity(){
@@ -234,12 +237,23 @@ public class BikerFragementActivity extends android.support.v4.app.Fragment impl
 
         //---------------------------------------
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getActivity().getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-        ref = FirebaseDatabase.getInstance().getReference("MyLocation");
-        geoFire = new GeoFire(ref);
-        setUpLocation();
+//        SupportMapFragment mapFragment = (SupportMapFragment) getActivity().getSupportFragmentManager()
+//                .findFragmentById(R.id.map);
+        mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+
+        if (mapFragment == null){
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            mapFragment = SupportMapFragment.newInstance();
+            fragmentTransaction.replace(R.id.map, mapFragment).commit();
+        }
+
+        if(mapFragment != null){
+            mapFragment.getMapAsync(this);
+            ref = FirebaseDatabase.getInstance().getReference("MyLocation");
+            geoFire = new GeoFire(ref);
+            setUpLocation();
+        }
 
     }
 
@@ -360,15 +374,15 @@ public class BikerFragementActivity extends android.support.v4.app.Fragment impl
         mMap = googleMap;
 
         //create the zone area
-        LatLng zone = new LatLng(33.991359,-6.849264);
+        LatLng zone = new LatLng(33.911322,-6.925743);
         mMap.addCircle(new CircleOptions()
                 .center(zone)
-                .radius(500)
+                .radius(5000)
                 .strokeColor(Color.BLUE)
-                .fillColor(Color.RED)
+                .fillColor(0x220000FF)
                 .strokeWidth(5.0f));
         // add geo query
-        GeoQuery geoQuery = geoFire.queryAtLocation(new GeoLocation(zone.latitude,zone.longitude),0.5f);
+        GeoQuery geoQuery = geoFire.queryAtLocation(new GeoLocation(zone.latitude,zone.longitude),5.0f);
         geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
             @Override
             public void onKeyEntered(String key, GeoLocation location) {

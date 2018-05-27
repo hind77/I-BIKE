@@ -8,15 +8,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            />
         <RelativeLayout
             android:id="@+id/infospeed"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
             android:background="@color/colorPrimary"
             >
-
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -31,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/distance_data"
-                android:text="55.32 km's"
+                android:text="0.00 km's"
                 android:layout_below="@+id/distance"
                 android:layout_marginTop="10dp"
                 android:textSize="18sp"
@@ -58,11 +64,11 @@
                 android:layout_toEndOf="@+id/distance_data"
                 android:layout_toRightOf="@+id/distance_data"
                 android:layout_marginTop="10dp"
-                android:text="10 km/hr"
+                android:text="0 km/hr"
                 android:textSize="18sp"
                 android:layout_below="@+id/speed"
                 android:textColor="@color/ButtonsTextColors"
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="60dp"
                 />
             <TextView
                 android:id="@+id/duration"
@@ -83,27 +89,18 @@
                 android:layout_toEndOf="@+id/speed_data"
                 android:layout_toRightOf="@+id/speed_data"
                 android:layout_marginTop="10dp"
-                android:text="3 min"
+                android:text="0 min"
                 android:textSize="18sp"
                 android:layout_below="@+id/duration"
                 android:textColor="@color/ButtonsTextColors"
-                android:layout_marginLeft="60dp"
+                android:layout_marginLeft="70dp"
                 />
 
 
 
 
         </RelativeLayout>
-        <fragment
-            android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            >
 
-        </fragment>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
