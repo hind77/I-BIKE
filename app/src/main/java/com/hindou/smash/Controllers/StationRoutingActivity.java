@@ -150,6 +150,7 @@ public class StationRoutingActivity extends AppCompatActivity implements OnMapRe
         // Start marker
         MarkerOptions options = new MarkerOptions();
         options.position(start);
+        options.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_directions_walk_black_24dp));
         mGoogleMap.addMarker(options);
 
         // End marker

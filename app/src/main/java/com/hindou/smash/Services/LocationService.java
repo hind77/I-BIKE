@@ -115,10 +115,10 @@ public class LocationService extends Service implements
         contentView = new RemoteViews(getPackageName(), R.layout.notif_item_biker);
 
         contentView.setTextViewText(R.id.title, "Biker Data");
-        contentView.setTextViewText(R.id.text,"distance: "+ String.valueOf(new DecimalFormat("#.###").format(distance) + " Km's."));
+        contentView.setTextViewText(R.id.text,"distance: "+ String.valueOf(new DecimalFormat("#.###").format(distance) + " Km's."+" Speed: "));
 
         mBuilder = new NotificationCompat.Builder(getBaseContext(),"notif02")
-                .setSmallIcon(R.drawable.cast_ic_notification_small_icon)
+                .setSmallIcon(R.drawable.heliantha)
                 .setContent(contentView);
         notificationManager = NotificationManagerCompat.from(getBaseContext());
         notification = mBuilder.build();

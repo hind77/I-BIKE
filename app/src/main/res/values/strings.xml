@@ -15,13 +15,13 @@
 
     <!--Drawer secondary item titles-->
     <string name="drawer_book_bike_title">Reserve</string>
-    <string name="drawer_lock_bike_title">Lock bikes</string>
+    <string name="drawer_lock_bike_title">Lock bike</string>
     <string name="drawer_cancel">Cancel reservation</string>
 
     <!--Activities titles-->
     <string name="reserve_activity_title">Reserve bike</string>
-    <string name="lock_activity_title">Lock/Unlock bikes</string>
-    <string name="stations_activity_title">Nearby stations</string>
+    <string name="lock_activity_title">Lock/Unlock bike</string>
+    <string name="stations_activity_title">Nearby station</string>
     <string name="cancel_activity_title">Cancel reservation</string>
 
     <!--Dialog's content-->

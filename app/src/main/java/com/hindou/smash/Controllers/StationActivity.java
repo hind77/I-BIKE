@@ -27,6 +27,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -219,7 +220,7 @@ public class StationActivity extends AppCompatActivity implements OnMapReadyCall
                                                 mGoogleMap.addMarker(new MarkerOptions().position(
                                                         new LatLng(Double.valueOf(data.getJSONObject(i).getString("lat")),
                                                                 Double.valueOf(data.getJSONObject(i).getString("lng")))
-                                                ).title(data.getJSONObject(i).getString("name")));
+                                                ).title(data.getJSONObject(i).getString("name")).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_directions_bike_black_24dp)));
                                             }
                                         } else {
                                             showSnack(rep.getString("error"));

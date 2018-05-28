@@ -46,6 +46,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -318,7 +319,8 @@ public class BikerFragementActivity extends android.support.v4.app.Fragment impl
                     }
                     mCurrent = mMap.addMarker(new MarkerOptions()
                             .position(new LatLng(lat,lon))
-                            .title("ibike"));
+                            .title("ibike")
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_directions_bike_black_24dp)));
                     // move camera to this position
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat,lon),12.0f));
                 }

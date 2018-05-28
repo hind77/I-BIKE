@@ -55,9 +55,9 @@ public class Ehealth extends AppCompatActivity {
         setSupportActionBar(toolbar);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         ViewPagerAdapter Adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        Adapter.addFragment(new InfoFragementActivity(), "info");
-        Adapter.addFragment(new HealthFragementActivity(), "health");
-        Adapter.addFragment(new BikerFragementActivity(),"User");
+        Adapter.addFragment(new InfoFragementActivity(), "Info");
+        Adapter.addFragment(new HealthFragementActivity(), "Health Tracking");
+        Adapter.addFragment(new BikerFragementActivity(),"User Tracking");
         Adapter.addFragment(new DrinkFragementActivity(),"Water Tracking");
 
         viewPager.setAdapter(Adapter);
