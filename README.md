@@ -48,7 +48,7 @@ you should see your remote and everything should work through the GUI.
 
 * [Volley](https://developer.android.com/training/volley/index.html) - A google library for http networking
 * [MaterialDrawer](https://github.com/mikepenz/MaterialDrawer) - The flexible, easy to use, all in one drawer library for Android
-* [Otto](http://square.github.io/otto/) - Otto is an event bus designed to allow communication between services and fragments
+* [Otto](http://square.github.io/otto/) - Otto is an event bus designed to allow communication between background services and fragments
 * [Firebase](https://firebase.google.com/) - A developement platform i used the geofencing API
 
 
